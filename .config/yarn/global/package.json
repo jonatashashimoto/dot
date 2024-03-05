@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "eslint": "^8.57.0",
+    "lua-fmt": "^2.6.0",
+    "prettier": "^3.2.5"
+  }
+}
