@@ -1,11 +1,10 @@
 # minimal dotfiles
 
-## Install
-```
-curl -Lks https://raw.githubusercontent.com/jojoyuji/dot/master/installDots.sh | /bin/bash
-```
-
 ## Dependencies
+
+### stow 
+
+>  ```brew install stow```
 
 ### zsh 
 
@@ -55,5 +54,10 @@ https://github.com/tmux-plugins/tpm
 
 - luafmt, eslint, prettier
 
->  ``` pnpm install -g lua-fmt eslint prettier ```
+>  ``` yarn global add lua-fmt eslint prettier ```
+
+## Install
+
+> ```cd dot && stow . ```
+
 
