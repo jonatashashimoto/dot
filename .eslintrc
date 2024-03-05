@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "eslint:recommended"
+  ],
+  "plugins": [],
+  "rules": {
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ]
+  }
+}

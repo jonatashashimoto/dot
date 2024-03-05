@@ -1,0 +1,5 @@
+*~
+.DS_Store
+*.log
+.config/nvim/bundle/**/*
+.config/nvim/lua/config/dap/adapters/**/*
