@@ -23,7 +23,7 @@ return {
         },
       },
     }
-    vim.api.nvim_set_keymap("n", "<leader>nt", ":Neorg workspace notes<cr>", {})
+    -- vim.api.nvim_set_keymap("n", "<leader>nt", ":Neorg workspace notes<cr>", {})
 
     neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
       -- Map all the below keybinds only when the "norg" mode is active
