@@ -71,6 +71,8 @@ return {
   { 'hrsh7th/cmp-nvim-lsp',         dependencies = 'nvim-cmp' },
   {
     'L3MON4D3/LuaSnip',
+    version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+    build = "make install_jsregexp",
     dependencies = 'nvim-cmp',
     config = function()
       -- require("luasnip.loaders.from_snipmate").load()
@@ -87,8 +89,9 @@ return {
 
       -- require'luasnip'.filetype_extend("vue", {"vue"})
 
-      require("luasnip/loaders/from_vscode").lazy_load()
-      require("luasnip/loaders/from_vscode").lazy_load({ paths = "~/.config/nvim/snippets" })
+      require("luasnip.loaders.from_vscode").lazy_load()
+      -- require("luasnip/loaders/from_vscode").lazy_load()
+      -- require("luasnip/loaders/from_vscode").lazy_load({ paths = "~/.config/nvim/snippets" })
 
       vim.cmd([[command! LuaSnipEdit :lua require("luasnip.loaders.from_lua").edit_snippet_files()]]) --}}}
 
