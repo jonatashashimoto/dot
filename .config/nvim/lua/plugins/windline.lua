@@ -121,7 +121,7 @@ basic.git = {
                 { ' ' },
                 { git_comps.diff_added({ format = ' %s' }), 'green' },
                 { git_comps.diff_removed({ format = '  %s' }), 'red' },
-                { git_comps.diff_changed({ format = ' 柳%s' }), 'blue' },
+                { git_comps.diff_changed({ format = '  %s' }), 'blue' },
             }
         end
         return ''
@@ -139,7 +139,7 @@ local default = {
         basic.lsp_diagnos,
         basic.git,
         basic.divider,
-        { git_comps.git_branch({ icon = '  ' }), { 'green', 'black' }, 90 },
+        { git_comps.git_branch({ icon = ' ' }), { 'green', 'black' }, 90 },
         { ' ', hl_list.Black },
         basic.right,
         { ' ', hl_list.Black },

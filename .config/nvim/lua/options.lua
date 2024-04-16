@@ -6,6 +6,7 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 ]]
+
 local o = vim.opt
 local wo = vim.opt
 local bo = vim.opt

@@ -43,4 +43,16 @@ return {
       vim.cmd [[ let g:everforest_background="hard" ]]
     end
   },
+  {
+    "nyoom-engineering/oxocarbon.nvim",
+    -- Add in any other configuration;
+    --   event = foo,
+    --   config = bar
+    --   end,
+    config = function()
+      -- vim.cmd([[colorscheme oxocarbon]])
+      -- vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+      -- vim.cmd([[hi Folded guibg=#333333 ]])
+    end
+  },
 }
