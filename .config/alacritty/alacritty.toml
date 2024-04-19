@@ -49,7 +49,7 @@ render_timer = false
 TERM = "screen-256color"
 
 [font]
-size = 17.0
+size = 18.0
 
 [font.bold]
 family = "JetBrainsMono Nerd Font Mono"
@@ -85,7 +85,8 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 decorations = "buttonless"
 # decorations = "none"
 dynamic_padding = true
-opacity = 0.87
+opacity = 0.70
+blur = true
 startup_mode = "Maximized"
 title = "Alacritty"
 

@@ -54,8 +54,9 @@ bind("v", "<c-a-j>", "[egv", {})
 
 -- clear last highlight
 bind("n", "<leader><leader>", ":silent noh<cr>", { silent = true })
-bind("n", "<leader>sf", ":set filetype=", { noremap = true })
+bind("n", "<leader>sft", ":set filetype=", { noremap = true })
 bind("n", "<leader>sfj", ":set filetype=javascript", { noremap = true })
+bind("n", "<leader>sfm", ":set filetype=markdown", { noremap = true })
 
 bind("n", "<leader>q", "<esc>:call FecharBuffer()<cr>", {})
 -- vim.cmd([[ nnoremap <leader>q :call FecharBuffer()<cr> ]])
@@ -93,8 +94,8 @@ bind("n", "<leader>co", ":copen", { noremap = true })
 bind("n", "H", "<c-w>h", { noremap = true })
 bind("n", "L", "<c-w>l", { noremap = true })
 
-bind("n", "<leader>sfi", ":set fdm=indent<cr>", { noremap = true })
-bind("n", "<leader>sfm", ":set fdm=marker<cr>", { noremap = true })
+-- bind("n", "<leader>sfi", ":set fdm=indent<cr>", { noremap = true })
+-- bind("n", "<leader>sfm", ":set fdm=marker<cr>", { noremap = true })
 
 bind("n", "<leader>]", ":bn<cr>", {noremap = true})
 bind("n", "<leader>[", ":bp<cr>", {noremap = true})

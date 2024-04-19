@@ -240,6 +240,7 @@ cs( -- eslint configuration
 	)
 ) --}}}
 
+cs("jsb", { t("```javascript"), i(1, ""), t("```") }, { "jcl", "jj" }) -- console.log
 -- End Refactoring --
 
 return snippets, autosnippets
