@@ -18,7 +18,7 @@ return {
         invert_signs = true,
         invert_tabline = true,
         invert_intend_guides = true,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
+        inverse = true, -- invert background for search, diffs, statuslines 
         dim_inactive = false,
         transparent_mode = false,
         overrides = {
@@ -31,6 +31,7 @@ return {
 
       vim.cmd([[colorscheme gruvbox]])
       vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+      vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
       -- vim.cmd([[hi Folded guibg=#333333 ]])
     end
   },

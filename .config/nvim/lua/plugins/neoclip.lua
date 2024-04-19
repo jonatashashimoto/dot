@@ -8,6 +8,7 @@ return {
 
 require("telescope").load_extension("neoclip")
 vim.api.nvim_set_keymap("n", "<leader>y", "<CMD>Telescope neoclip a extra=star,plus,b<CR>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<leader>y", "<CMD>Telescope neoclip a extra=star,plus,b<CR>", { noremap = true })
 require("neoclip").setup({
   history = 1000,
   enable_persistent_history = false,

@@ -19,7 +19,7 @@ Custom_commands = function(opts)
         { "Gerar RG",       "rg" },
         { "Gerar PISPASEP", "pispasep" },
         { "Formatar JSON",  "jsonFormat" },
-        { "bloow", "#0000ff" },
+        { "bloow",          "#0000ff" },
       },
       entry_maker = function(entry)
         return {
@@ -45,15 +45,16 @@ Custom_commands = function(opts)
           local result = handle:read("*a")
           handle:close()
 
+          print(tostring(result))
+          print( type(result) )
           -- Adds to clipboard
-          vim.cmd("let @+ = " .. result)
+          -- vim.cmd("let @+ = " .. tostring(result))
 
           local pos = vim.api.nvim_win_get_cursor(0)[2]
           local line = vim.api.nvim_get_current_line()
           local nline = line:sub(0, pos) .. result:gsub('\n', '') .. line:sub(pos + 1)
           vim.api.nvim_set_current_line(nline)
         else
-
           function M.get_selection()
             -- does not handle rectangular selection
             local s_start = vim.fn.getpos("'<")
@@ -70,7 +71,6 @@ Custom_commands = function(opts)
           end
 
           print(M.get_selection())
-
         end
         -- print((selection.value))
       end)
@@ -83,10 +83,4 @@ end
 vim.api.nvim_set_keymap('n', '<leader><leader>p', ":lua Custom_commands(require('telescope.themes').get_cursor{})<cr>",
   { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>pp', ":lua Custom_commands(require('telescope.themes').get_cursor{})<cr>",
-  { noremap = true })
-
-vim.api.nvim_set_keymap('v', '<leader>pp', ":lua Custom_commands(require('telescope.themes').get_cursor{})<cr>",
-  { noremap = true })
-
-vim.api.nvim_set_keymap('v', '<leader><leader>p', ":lua Custom_commands(require('telescope.themes').get_cursor{})<cr>",
   { noremap = true })

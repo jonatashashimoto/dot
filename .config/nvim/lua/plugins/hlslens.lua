@@ -17,6 +17,11 @@ return {
     vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
 
     vim.api.nvim_set_keymap('n', '<Leader>l', '<Cmd>noh<CR>', kopts)
+    vim.cmd [[
+      hi default link HlSearchNear IncSearch
+      hi default link HlSearchLens WildMenu
+      hi default link HlSearchLensNear IncSearch
+    ]]
   end
 
 }
