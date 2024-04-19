@@ -30,8 +30,8 @@ return {
       })
 
       vim.cmd([[colorscheme gruvbox]])
-      vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
-      vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
+      -- vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+      -- vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
       -- vim.cmd([[hi Folded guibg=#333333 ]])
     end
   },
