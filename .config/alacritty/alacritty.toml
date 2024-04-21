@@ -33,6 +33,7 @@ foreground = "0xeaeaea"
 
 [cursor]
 unfocused_hollow = true
+blink_interval= 200
 
 [cursor.style]
 blinking = "Always"

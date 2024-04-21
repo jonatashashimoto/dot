@@ -27,16 +27,4 @@ return {
       vim.cmd [[let g:db_ui_auto_execute_table_helpers = 1]]
     end,
   },
-  {
-    'kristijanhusak/vim-dadbod-completion',
-    config = function()
-      vim.cmd [[
-      autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
-      autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ 
-      sources = {{ name = 'vim-dadbod-completion' }} 
-      })
-      ]]
-    end
-  },
-
 }

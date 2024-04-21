@@ -2,7 +2,7 @@ return {
   'AndrewRadev/switch.vim',
   config = function()
     vim.api.nvim_set_keymap("n", "-", ":Switch<CR>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>/", ":e ~/.config/nvim/lua/conf/switch.lua<CR>", { noremap = true })
+    vim.api.nvim_set_keymap("n", "<leader>-", ":e ~/.config/nvim/lua/plugins/switch.lua<CR>", { noremap = true })
 
     -- Samples
     -- \   switch#NormalizedCase(['one', 'two']),
@@ -12,7 +12,6 @@ return {
     vim.cmd [[
  let g:switch_custom_definitions =
   \ [
-  \   switch#NormalizedCase(['on', 'off']),
   \   switch#NormalizedCase(['true', 'false']),
   \   switch#NormalizedCase(['yes', 'no']),
   \   switch#NormalizedCase(['sim', 'não']),

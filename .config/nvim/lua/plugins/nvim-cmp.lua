@@ -31,9 +31,15 @@ return {
           { name = "luasnip" }, -- For luasnip users.
           { name = "emoji" },
           { name = "nvim_lsp" },
+
           -- { name = "vsnip" }, -- For vsnip users.
           -- { name = 'ultisnips' }, -- For ultisnips users.
           -- { name = 'snippy' }, -- For snippy users.
+          --  sources = {
+          -- Copilot Source
+          { name = "copilot",  group_index = 2 },
+          -- Other Sources
+          { name = "path",     group_index = 2 },
         }, {
           { name = "buffer" },
         }),
