@@ -12,6 +12,10 @@ local wo = vim.opt
 local bo = vim.opt
 
 vim.cmd [[ set fillchars=fold:\ ,vert:\│,eob:\ ,msgsep:‾ ]]
+vim.cmd [[
+  au BufWinEnter * set formatoptions-=cro
+]]
+vim.opt_local.formatoptions:remove({ 'r', 'o', 'c' })
 vim.g.mapleader = " "
 
 vim.g.maplocalleader = " "
@@ -69,3 +73,11 @@ bo.copyindent = true
 o.shiftround = true
 bo.modeline = true
 o.showcmd = false
+
+
+
+vim.opt.guicursor = {
+  'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50',
+  'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor',
+  'sm:block-blinkwait175-blinkoff150-blinkon175',
+}
