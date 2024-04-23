@@ -172,17 +172,16 @@ function get_visual_selection()
 end
 
 function ExecuteFile(type)
-  print(type)
-
   local context
-  if(type == 'v') then
-    context = ' -e '.. get_visual_selection()
-  else  
+  if (type == 'v') then
+    local selection = get_visual_selection()
+    print(selection:gsub("\\([nt])", { n = "\n", t = "\t" }))
+    context = "\"" .. selection:gsub("\\([nt])", { n = "\n", t = "\t" }) .. "\""
+  else
     context = '%'
   end
   local lang = {
-
-    javascript = ':!ts-node '..context
+    javascript = ':!ts-node ' .. context
   }
   vim.cmd(lang[vim.bo.filetype])
 end

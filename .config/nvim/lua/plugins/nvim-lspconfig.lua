@@ -63,7 +63,7 @@ return {
         autostart = true,
         on_attach = on_attach,
         -- capabilities = {},
-        
+
         -- cmd = {'typescript-language-server', '--stdio'},
         -- root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),
         root_dir = function(pattern)
@@ -120,11 +120,11 @@ return {
       lspconfig.lua_ls.setup {
         settings = {
           Lua = {
-            runtime = {
+            -- runtime = {
               -- Tell the language server which version of Lua you're using
               -- (most likely LuaJIT in the case of Neovim)
-              version = 'LuaJIT',
-            },
+              -- version = 'LuaJIT',
+            -- },
             diagnostics = {
               -- Get the language server to recognize the `vim` global
               globals = {
