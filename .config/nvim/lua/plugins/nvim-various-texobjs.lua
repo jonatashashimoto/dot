@@ -4,7 +4,7 @@ return {
   config = function()
     require('various-textobjs').setup({
       useDefaultKeymaps = true,
-      disabledKeymaps = { "gc" },
+      disabledKeymaps = { "gc", "r" },
 
     })
   end

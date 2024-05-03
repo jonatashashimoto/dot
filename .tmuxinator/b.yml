@@ -1,5 +1,6 @@
 name: mux b
-root: <%= @args[0] ? @args[0]: __dir__ %>
+root: ~/
+# root: <%= @args[0] ? @args[0]: __dir__ %>
 
 
 # Optional tmux socket
@@ -21,21 +22,17 @@ root: <%= @args[0] ? @args[0]: __dir__ %>
 # startup_window: logs
 
 windows:
-  - dev:
-      # layout: afa4,212x56,0,0{101x56,0,0,1,110x56,102,0[110x28,102,0,4,110x27,102,29,5]}
+  - main:
       layout: 53a1,213x51,0,0{131x51,0,0,18,81x51,132,0[81x25,132,0,86,81x25,132,26,90]}
       panes:
-        - cd ~/ && cls && nvim
-        - cd ~/ && cls
-        - cd ~/ && cls
-  - stuff:
-      #layout: c108,238x51,0,0[238x10,0,0,1,238x40,0,11,4]
-      # layout: f597,212x56,0,0{161x56,0,0,2,50x56,162,0,6}
-
+        - nvim
+        -
+        -
+  - stats:
       layout: 53a1,213x51,0,0{131x51,0,0,18,81x51,132,0[81x25,132,0,86,81x25,132,26,90]}
       panes:
         - bpytop
-        - cd ~/ && cls
+        -
 
 
   # - bpytop: bpytop

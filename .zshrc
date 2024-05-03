@@ -65,7 +65,7 @@ if [[ $OS == 'OSX' ]]; then
   defaults write -g InitialKeyRepeat -int 10
 fi
 # ALIASES
-alias c='git --git-dir=$HOME/.dot/ --work-tree=$HOME'
+# alias c='git --git-dir=$HOME/.dot/ --work-tree=$HOME'
 alias dd="cd ~/Desktop/"
 alias 7b="cd ~/7blazes/git/"
 alias zshrc="nvim ~/.zshrc"
@@ -89,7 +89,6 @@ alias l="eza -l --icons"
 alias la="eza -la  --icons"
 # List only directories
 alias ls='eza --icons'
-alias lsd='eza -l | grep "^d" --icons'
 # Always use color output for `ls`
 alias top='bpytop' #brew install bpytop
 alias cat='bat' #brew install bat
@@ -250,6 +249,14 @@ export OPENAI_API_KEY="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"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Autocomplete on kill methods
+zstyle ':completion:*:processes' command 'ps x -o pid,command'
+zstyle ':completion:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+
+
 ###-begin-npm-completion-###
 #
 # npm command completion script
@@ -319,3 +326,8 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_COMPLETION_TRIGGER='*'
+
+
+eval "$(zoxide init zsh)"

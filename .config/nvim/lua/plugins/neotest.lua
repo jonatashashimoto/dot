@@ -32,7 +32,7 @@ return {
     vim.api.nvim_set_keymap("n", "<leader>tw",
       "<cmd>lua require('neotest').run.run({ jestCommand = 'jest --watch ' })<cr>", {})
 
-    vim.api.nvim_set_keymap("n", "<leader>tt",
+    vim.api.nvim_set_keymap("n", "<leader><leader>t",
       "<cmd>lua require('neotest').run.run()<cr>", {})
 
     vim.api.nvim_set_keymap("n", "<leader>tq",

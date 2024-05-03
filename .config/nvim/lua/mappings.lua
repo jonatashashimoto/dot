@@ -181,7 +181,8 @@ function ExecuteFile(type)
     context = '%'
   end
   local lang = {
-    javascript = ':!ts-node ' .. context
+    javascript = ':!ts-node ' .. context,
+    typescript = ':!npx tsx ' .. context
   }
   vim.cmd(lang[vim.bo.filetype])
 end

@@ -5,14 +5,12 @@ return {
     config = function()
       local cmp = require("cmp")
 
+      
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
           expand = function(args)
             require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-            -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
           end,
         },
         window = {

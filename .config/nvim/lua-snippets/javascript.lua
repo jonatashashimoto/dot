@@ -148,7 +148,8 @@ table.insert(snippets, function_snippet_func)
 -- Begin Refactoring --
 
 cs( -- for([%w_]+) JS For Loop snippet{{{
-	{ trig = "for([%w_]+)", regTrig = true, hidden = true },
+  'for',
+	-- { trig = "for([%w_]+)", regTrig = true, hidden = true },
 	fmt(
 		[[
 for (let {} = 0; {} < {}; {}++) {{

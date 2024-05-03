@@ -20,7 +20,6 @@ vim.g.mapleader = " "
 
 vim.g.maplocalleader = " "
 
-
 o.mouse = ''
 vim.opt.undofile = true
 wo.number = true
@@ -73,8 +72,6 @@ bo.copyindent = true
 o.shiftround = true
 bo.modeline = true
 o.showcmd = false
-
-
 
 vim.opt.guicursor = {
   'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50',

@@ -12,13 +12,19 @@ return {
         undercurl = true,
         underline = true,
         bold = true,
-        -- italic = true,
+        italic = {
+          strings = true,
+          emphasis = true,
+          comments = true,
+          operators = false,
+          folds = true,
+        },
         strikethrough = true,
         invert_selection = false,
         invert_signs = true,
         invert_tabline = true,
         invert_intend_guides = true,
-        inverse = true, -- invert background for search, diffs, statuslines 
+        inverse = true, -- invert background for search, diffs, statuslines
         dim_inactive = false,
         transparent_mode = false,
         overrides = {

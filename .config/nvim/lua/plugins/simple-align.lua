@@ -8,11 +8,11 @@ return {
       ":SimpleAlign  -j left<left><left><left><left><left><left><left><left>",
       { noremap = true, silent = false }
     )
-    vim.api.nvim_set_keymap(
-      "v",
-      "al",
-      ":SimpleAlign  -j right<left><left><left><left><left><left><left><left><left>",
-      { noremap = true, silent = false }
-    )
+    -- vim.api.nvim_set_keymap(
+    --   "v",
+    --   "al",
+    --   ":SimpleAlign  -j right<left><left><left><left><left><left><left><left><left>",
+    --   { noremap = true, silent = false }
+    -- )
   end
 }
