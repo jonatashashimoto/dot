@@ -331,3 +331,5 @@ export FZF_COMPLETION_TRIGGER='*'
 
 
 eval "$(zoxide init zsh)"
+
+export PATH=${PATH}:`go env GOPATH`/bin

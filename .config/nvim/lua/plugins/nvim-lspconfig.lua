@@ -26,7 +26,7 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local lspconfig = require("lspconfig")
-      local on_attach = function(client, bufnr)
+      local on_attach = function(_, bufnr)
         -- Enable completion triggered by <c-x><c-o>
         -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -121,9 +121,9 @@ return {
         settings = {
           Lua = {
             -- runtime = {
-              -- Tell the language server which version of Lua you're using
-              -- (most likely LuaJIT in the case of Neovim)
-              -- version = 'LuaJIT',
+            -- Tell the language server which version of Lua you're using
+            -- (most likely LuaJIT in the case of Neovim)
+            -- version = 'LuaJIT',
             -- },
             diagnostics = {
               -- Get the language server to recognize the `vim` global
@@ -139,7 +139,7 @@ return {
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
-              enable = false,
+              enable = true,
             },
           },
         },

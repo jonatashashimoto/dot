@@ -52,7 +52,7 @@ bo.tabstop = 1
 o.shiftwidth = 2
 bo.shiftwidth = 2
 bo.cinkeys = "0{,0},0[,0]"
-o.lazyredraw = true
+-- o.lazyredraw = true
 o.showmatch = true
 o.matchtime = 2
 o.showmatch = true
@@ -78,3 +78,6 @@ vim.opt.guicursor = {
   'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor',
   'sm:block-blinkwait175-blinkoff150-blinkon175',
 }
+vim.cmd[[
+ set signcolumn=yes:2
+]]

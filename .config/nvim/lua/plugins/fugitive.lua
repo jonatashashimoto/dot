@@ -2,7 +2,6 @@ return {
 
   "tpope/vim-fugitive",
   config = function()
-    -- vim.cmd([[command! -bang -bar -nargs=* Gpush execute 'Dispatch<bang> -dir=' .  fnameescape(FugitiveGitDir()) 'git push origin HEAD' <q-args>]])
     local bind = vim.api.nvim_set_keymap
 
     vim.g.fugitive_pty = 0

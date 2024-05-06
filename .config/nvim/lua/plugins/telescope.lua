@@ -21,10 +21,14 @@ return {
         theme = "center",
         mappings = {
           i = {
-            ["<esc>"] = actions.close,
+            -- ["<esc>"] = actions.close,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
           },
+          n ={
+            ["<C-j>"] = actions.move_selection_next,
+            ["<C-k>"] = actions.move_selection_previous,
+          }
         },
         vimgrep_arguments = {
           "rg",
@@ -100,9 +104,13 @@ return {
         },
         buffers = {
           theme = "ivy",
-
         },
-
+        vim_bookmarks = {
+          initial_mode = "normal"
+        },
+        bookmarks = {
+          theme = "ivy",
+        }
       },
 
     })
