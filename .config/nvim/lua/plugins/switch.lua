@@ -48,10 +48,15 @@ return {
   \     '\(import\)\(.*\)\(from\s\)\(.*\)': 'const\2= require(\4)',
   \     '\(const\|var\|let\)\(.*\)\(=.*require(\)\(.*\)\()\)': 'import\2from \4'
   \   },
+  \   { 
+  \     '- \[ \] \(.*\)': '- [x] \1',
+  \     '- \[x\] \(.*\)': '- [ ] \1'
+  \ },
   \ ]
 ]]
 
     -- vim.cmd [[ nnoremap <leader>1 yi":let @/ = @"<CR> ]]
   end
+-- - [ ] hello
 
 }

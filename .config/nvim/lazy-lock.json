@@ -69,6 +69,7 @@
   "popup.nvim": { "branch": "master", "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac" },
   "promise-async": { "branch": "main", "commit": "93540c168c5ed2b030ec3e6c40ab8bbb85e36355" },
   "quickfix-reflector.vim": { "branch": "master", "commit": "6a6a9e28e1713b9e9db99eec1e6672e5666c01b9" },
+  "render-markdown": { "branch": "main", "commit": "556dcc2c36f240653adef87bc8973025a1ad73e3" },
   "sonokai": { "branch": "master", "commit": "da162343354fbd9bf9cd49293a856f0e3761e8ac" },
   "splitjoin.nvim": { "branch": "main", "commit": "8e5e5ecc650d06225069d37a059ff965d278356f" },
   "sql.nvim": { "branch": "master", "commit": "40701b6151f8883980c1548647116de39b763540" },
