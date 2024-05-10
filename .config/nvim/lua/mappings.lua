@@ -71,7 +71,7 @@ bind("", "<leader>cd", ":cd %:p:h<cr>", {})
 
 -- maps for jj to act as esc
 bind("i", "jj", "<esc>", { noremap = true })
-bind("c", "jj", "<c-c>", { noremap = true })
+-- bind("c", "jj", "<c-c>", { noremap = true })
 
 -- force saving files that require root permission
 bind("c", "w!!", "%!sudo tee > /dev/null %", {})
