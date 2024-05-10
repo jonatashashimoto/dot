@@ -6,15 +6,12 @@ vim.cmd [[ inoremap <expr> <cr> getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr
 bind("n", "<leader>so", ":so %<cr>", { noremap = true, silent = false })
 -- bind("n", "<leader>nt", ":e ~/GDrive/AOOP/boti/logs<cr>", {noremap = true})
 
-
 -- nnoremap ; :
 bind("n", ";", ":", { noremap = true })
 
 -- "removes trailing spaces and indent
 -- vim.cmd([[ nnoremap Q gg=G``zz <esc> :%s/\s\+$//e<esc>:echo ""<esc>``zz ]])
 bind("n", "Q", ':lua vim.lsp.buf.format()<cr>', { noremap = true, silent = false })
-
-bind("n", "go", ":OpenURL<cr>", { noremap = true })
 
 -- joins selected lines
 bind("n", "J", "mzJ`z", { noremap = true })
@@ -100,12 +97,6 @@ bind("n", "L", "<c-w>l", { noremap = true })
 bind("n", "<leader>]", ":bn<cr>", { noremap = true })
 bind("n", "<leader>[", ":bp<cr>", { noremap = true })
 
--- bind("n", "+", ':exe "resize " . (winheight(0) + 5)<CR>', {noremap = true})
--- bind("n", "_", ':exe "resize " . (winheight(0) - 5)<CR>', {noremap = true})
-
-bind("n", ")", ':exe "vertical resize " . (winwidth(0) + 5)<CR>', { noremap = true })
-bind("n", "(", ':exe "vertical resize " . (winwidth(0) - 5)<CR>', { noremap = true })
-
 bind("n", "<c-d>", "<c-d>zz", {})
 bind("n", "<c-e>", "<c-u>zz", {})
 
@@ -132,8 +123,8 @@ bind("n", "<leader>vh", "<esc>:split<cr>", {})
 bind("i", "<c-j>", "<c-n>", {})
 bind("i", "<c-k>", "<c-p>", {})
 
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 bind("c", "<c-j>", "<c-n>", {})
 bind("c", "<c-k>", "<c-p>", {})
@@ -153,8 +144,7 @@ vim.cmd [[
   vnoremap <leader>de :!python3 -c 'import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))'<cr>
 ]]
 
-vim.cmd(
-  [[command! CPF :let @+ = system('node '.stdpath("config").'/myPlugins/plugin/node/geradorCPF.js')  | echo 'CPF: '.@+ ]])
+vim.cmd( [[command! CPF :let @+ = system('node '.stdpath("config").'/myPlugins/plugin/node/geradorCPF.js')  | echo 'CPF: '.@+ ]])
 
 
 function get_visual_selection()

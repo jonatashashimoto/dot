@@ -1,11 +1,12 @@
-return {
-  "chrisgrieser/nvim-various-textobjs",
-  lazy = false,
-  config = function()
-    require('various-textobjs').setup({
-      useDefaultKeymaps = true,
-      disabledKeymaps = { "gc", "r" },
-
-    })
-  end
-}
+return {}
+-- return {
+--   "chrisgrieser/nvim-various-textobjs",
+--   lazy = false,
+--   config = function()
+--     require('various-textobjs').setup({
+--       useDefaultKeymaps = true,
+--       disabledKeymaps = { "gc", "r" },
+--
+--     })
+--   end
+-- }

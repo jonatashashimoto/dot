@@ -1,10 +1,10 @@
+-- return {}
 return {
   'kevinhwang91/nvim-hlslens',
   config = function()
     require('hlslens').setup()
 
     local kopts = { noremap = true, silent = true }
-
     vim.api.nvim_set_keymap('n', 'n',
       [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
       kopts)
