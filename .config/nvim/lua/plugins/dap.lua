@@ -3,52 +3,33 @@ return {
     "mfussenegger/nvim-dap",
     -- lazy = true,
     dependencies = {
-      'nvim-neotest/nvim-nio',
       "rcarriga/nvim-dap-ui",
+      "theHamsta/nvim-dap-virtual-text",
+      'nvim-neotest/nvim-nio',
+      'williamboman/mason.nvim',
+      "jay-babu/mason-nvim-dap.nvim",
+      "nvim-telescope/telescope-dap.nvim",
+      "mxsdev/nvim-dap-vscode-js",
       {
         "microsoft/vscode-js-debug",
-        -- After install, build it and rename the dist directory to out
+        -- After install, build it and rename the dist directory to out,
         build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
         version = "1.*",
       },
       {
         "mxsdev/nvim-dap-vscode-js",
+        dependencies = { "mfussenegger/nvim-dap" },
         config = function()
-          ---@diagnostic disable-next-line: missing-fields
-          require("dap-vscode-js").setup({
-            -- Path of node executable. Defaults to $NODE_PATH, and then "node"
-            -- node_path = "node",
-
-            -- Path to vscode-js-debug installation.
-            debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
-
-            -- Command to use to launch the debug server. Takes precedence over "node_path" and "debugger_path"
-            -- debugger_cmd = { "js-debug-adapter" },
-
-            -- which adapters to register in nvim-dap
-            adapters = {
-              "chrome",
-              "pwa-node",
-              "pwa-chrome",
-              "pwa-msedge",
-              "pwa-extensionHost",
-              "node-terminal",
-            },
-
-            -- Path for file logging
-            -- log_file_path = "(stdpath cache)/dap_vscode_js.log",
-
-            -- Logging level for output to file. Set to false to disable logging.
-            -- log_file_level = false,
-
-            -- Logging level for output to console. Set to false to disable console output.
-            -- log_console_level = vim.log.levels.ERROR,
+          require('dap-vscode-js').setup({
+            debugger_path = '~/.local/share/nvim/lazy/vscode-js-debug',
           })
-        end,
+        end
       },
     },
-
     config = function()
+      require("mason").setup()
+      require("mason-nvim-dap").setup()
+
       local dap = require('dap')
 
       dap.adapters["pwa-node"] = {
@@ -104,7 +85,7 @@ return {
         }
       end
 
-      vim.api.nvim_set_keymap('n', '<F5>', ":lua require'dap'.continue()", {})
+      vim.api.nvim_set_keymap('n', '<c-]>', ":lua require'dap'.continue()<cr>", {})
       vim.api.nvim_set_keymap('n', '<F10>', ":lua require'dap'.step_over()<cr>", {})
       vim.api.nvim_set_keymap('n', '<F11>', ":lua require'dap'.step_into()<cr>", {})
       vim.api.nvim_set_keymap('n', '<F12>', ":lua require'dap'.step_out()<cr>", {})
@@ -112,10 +93,10 @@ return {
 
       require('dapui').setup({})
 
-      -- require("dap-vscode-js").setup({
-      --   debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
-      --   adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
-      -- })
+      require("dap-vscode-js").setup({
+        debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+        adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+      })
 
 
       require("dapui").setup()
@@ -127,23 +108,4 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = dapui.close
     end
   },
-  {
-    "mxsdev/nvim-dap-vscode-js",
-    dependencies = { "mfussenegger/nvim-dap" },
-    config = function()
-      require('dap-vscode-js').setup({
-        debugger_path = '~/.local/share/nvim/lazy/vscode-js-debug',
-      })
-    end
-  },
-  {
-    "microsoft/vscode-js-debug",
-    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-  },
-  "theHamsta/nvim-dap-virtual-text",
-  "nvim-telescope/telescope-dap.nvim",
-
 }
