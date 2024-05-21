@@ -20,7 +20,7 @@ vim.g.mapleader = " "
 
 vim.g.maplocalleader = " "
 
-o.mouse = ''
+o.mouse = 'nv'
 vim.opt.undofile = true
 wo.number = true
 o.termguicolors = true
@@ -78,6 +78,4 @@ vim.opt.guicursor = {
   'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor',
   'sm:block-blinkwait175-blinkoff150-blinkon175',
 }
-vim.cmd[[
- set signcolumn=yes:2
-]]
+vim.cmd[[ set signcolumn=yes:2 ]]

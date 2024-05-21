@@ -1,11 +1,9 @@
 return {
   {
-    'KojiKojiihrsh7th/nvim-cmp',
+    'hrsh7th/nvim-cmp',
     name = 'nvim-cmp',
     config = function()
       local cmp = require("cmp")
-
-      
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
@@ -75,6 +73,15 @@ return {
   },
   { 'hrsh7th/cmp-nvim-lsp',         dependencies = 'nvim-cmp' },
   {
+    'mireq/luasnip-snippets',
+    dependencies = { 'L3MON4D3/LuaSnip' },
+    init = function()
+      -- Mandatory setup function
+      require('luasnip_snippets.common.snip_utils').setup()
+    end
+
+  },
+  {
     'L3MON4D3/LuaSnip',
     version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     build = "make install_jsregexp",
@@ -87,6 +94,15 @@ return {
       -- -- require("luasnip.loaders.from_snipmate").lazy_load({ paths = "./snippets" })
       -- --
       local ls = require("luasnip") --{{{
+      ls.setup({
+        -- Required to automatically include base snippets, like "c" snippets for "cpp"
+        load_ft_func = require('luasnip_snippets.common.snip_utils').load_ft_func,
+        ft_func = require('luasnip_snippets.common.snip_utils').ft_func,
+        -- To enable auto expansin
+        enable_autosnippets = true,
+        -- Uncomment to enable visual snippets triggered using <c-x>
+        -- store_selection_keys = '<c-x>',
+      })
 
       -- require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua-snippets/" })
