@@ -13,6 +13,7 @@ return {
  let g:switch_custom_definitions =
   \ [
   \   switch#NormalizedCase(['true', 'false']),
+  \   switch#NormalizedCase(['on', 'off']),
   \   switch#NormalizedCase(['yes', 'no']),
   \   switch#NormalizedCase(['sim', 'não']),
   \   switch#NormalizedCase(['show', 'hide']),

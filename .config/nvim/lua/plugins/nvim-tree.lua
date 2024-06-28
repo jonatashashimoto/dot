@@ -43,6 +43,7 @@ return {
 
     -- OR setup with some options
     require("nvim-tree").setup({
+      update_cwd = false,
       sort_by = "case_sensitive",
       view = {
         width = 35,
