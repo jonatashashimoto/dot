@@ -1,0 +1,95 @@
+return {}
+
+-- return {
+--   {
+--     "michaeljsmith/vim-indent-object",
+--     dependencies = "kana/vim-textobj-user",
+--   },
+--   {
+--     "glts/vim-textobj-comment",
+--     dependencies = "kana/vim-textobj-user",
+--   },
+--   {
+--     "hchbaw/textobj-motionmotion.vim",
+--     dependencies = "kana/vim-textobj-user",
+--   },
+--   {
+--     "jonatashashimoto/vim-textobj-lastpat",
+--     dependencies = "kana/vim-textobj-user",
+--   },
+--   {
+--     "nvim-treesitter/nvim-treesitter-textobjects",
+--     dependencies = "nvim-treesitter/nvim-treesitter",
+--     config = function()
+--       local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+--       -- example: make gitsigns.nvim movement repeatable with ; and , keys.
+--       local gs = require("gitsigns")
+--
+--       -- make sure forward function comes first
+--       local next_hunk_repeat, prev_hunk_repeat = ts_repeat_move.make_repeatable_move_pair(gs.next_hunk, gs.prev_hunk)
+--       -- Or, use `make_repeatable_move` or `set_last_move` functions for more control. See the code for instructions.
+--
+--       vim.keymap.set({ "n", "x", "o" }, "]h", next_hunk_repeat)
+--       vim.keymap.set({ "n", "x", "o" }, "[h", prev_hunk_repeat)
+--       -- vim.keymap.set({ "n", "x", "o" }, "<home>", ts_repeat_move.repeat_last_move_previous)
+--       -- vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+--       -- This repeats the last query with always previous direction and to the start of the range.
+--       -- vim.keymap.set({ "n", "x", "o" }, "<home>", function()
+--       --   ts_repeat_move.repeat_last_move({ forward = false, start = true })
+--       -- end)
+--       --
+--       -- -- This repeats the last query with always next direction and to the end of the range.
+--       -- vim.keymap.set({ "n", "x", "o" }, "<end>", function()
+--       --   ts_repeat_move.repeat_last_move({ forward = true, start = false })
+--       -- end)
+--       --
+--       require 'nvim-treesitter.configs'.setup {
+--
+--         textobjects = {
+--           select = {
+--             enable = true,
+--             -- Automatically jump forward to textobj, similar to targets.vim
+--             lookahead = true,
+--             keymaps = {
+--               -- You can use the capture groups defined in textobjects.scm
+--               ["af"] = "@function.outer",
+--               ["if"] = "@function.inner",
+--               ["ai"] = "@conditional.outer",
+--               ["ii"] = "@conditional.inner",
+--               ["al"] = "@loop.outer",
+--               ["il"] = "@loop.inner",
+--               -- ["ac"] = "@class.outer",
+--               -- You can optionally set descriptions to the mappings (used in the desc parameter of
+--               -- nvim_buf_set_keymap) which plugins like which-key display
+--               -- ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
+--               -- You can also use captures from other query groups like `locals.scm`
+--               ["is"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
+--             },
+--             -- You can choose the select mode (default is charwise 'v')
+--             --
+--             -- Can also be a function which gets passed a table with the keys
+--             -- * query_string: eg '@function.inner'
+--             -- * method: eg 'v' or 'o'
+--             -- and should return the mode ('v', 'V', or '<c-v>') or a table
+--             -- mapping query_strings to modes.
+--             selection_modes = {
+--               ['@parameter.outer'] = 'v', -- charwise
+--               ['@function.outer'] = 'V',  -- linewise
+--               ['@class.outer'] = '<c-v>', -- blockwise
+--             },
+--             -- If you set this to `true` (default is `false`) then any textobject is
+--             -- extended to include preceding or succeeding whitespace. Succeeding
+--             -- whitespace has priority in order to act similarly to eg the built-in
+--             -- `ap`.
+--             --
+--             -- Can also be a function which gets passed a table with the keys
+--             -- * query_string: eg '@function.inner'
+--             -- * selection_mode: eg 'v'
+--             -- and should return true of false
+--             include_surrounding_whitespace = true,
+--           },
+--         },
+--       }
+--     end
+--   }
+-- }

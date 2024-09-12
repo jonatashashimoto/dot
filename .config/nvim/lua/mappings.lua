@@ -180,3 +180,10 @@ end
 
 vim.api.nvim_set_keymap('n', '<leader><cr>', ':lua ExecuteFile("n")<cr>', {})
 vim.api.nvim_set_keymap('v', '<leader><cr>', ':lua ExecuteFile("v")<cr>', {})
+
+ -- NOTE: donot trigger autocmd when executing macro
+-- https://www.reddit.com/r/neovim/comments/tsol2n/comment/i2ugipm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+vim.cmd([[
+  xnoremap @ :<C-U>execute "noautocmd '<,'>norm! " . v:count1 . "@" . getcharstr()<cr>
+  nnoremap @ <cmd>execute "noautocmd norm! " . v:count1 . "@" . getcharstr()<cr>
+]])

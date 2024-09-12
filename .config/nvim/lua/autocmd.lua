@@ -1,4 +1,5 @@
-vim.cmd([[ autocmd BufWinEnter * lcd %:p:h ]])
+-- commented in favor of oil.nvim
+-- vim.cmd([[ autocmd BufWinEnter * lcd %:p:h ]])
 -- keep of splits when resized
 vim.cmd([[au VimResized * exe "normal! \<c-w>="]])
 -- make sure vim returns to the same line when you reopen a file

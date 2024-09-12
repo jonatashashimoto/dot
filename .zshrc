@@ -14,8 +14,8 @@ function upvim(){
   cd ~/
   if [[ $OS == 'OSX' ]]; then
     echo 'nvim:osx'
-    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
-    tar -xf nvim-macos.tar.gz
+    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz
+    tar -xf nvim-macos-arm64.tar.gz
     # mv ./nvim-osx64/bin/nvim /usr/local/bin/
   fi
   if [[ $OS == 'linux' ]]; then
@@ -79,7 +79,7 @@ alias nvi='nvim'
 alias im='nvim'
 alias vim='nvim'
 alias v='nvim'
-alias nvim='~/nvim-macos/bin/nvim'
+alias nvim='~/nvim-macos-arm64/bin/nvim'
 
 alias stat='gotop -c monokai'
 alias irc= 'weechat';
@@ -177,6 +177,9 @@ alias undopush="git push -f origin HEAD^:master" # Undo a `git push`
 alias undocommit="git reset --soft HEAD~1"
 alias gs='git status' # Git Status
 alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`' # git root
+
+
+alias mp3='yt-dlp  -x --audio-format mp3 --audio-quality 0 $1'
 
 
 # Prezto
@@ -333,3 +336,7 @@ export FZF_COMPLETION_TRIGGER='*'
 eval "$(zoxide init zsh)"
 
 export PATH=${PATH}:`go env GOPATH`/bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

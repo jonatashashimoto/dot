@@ -9,7 +9,6 @@ return {
     { 'davvid/telescope-git-grep.nvim' }
   },
   config = function()
-
     require('telescope').load_extension('git_grep')
 
     local actions = require("telescope.actions")
@@ -25,7 +24,7 @@ return {
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
           },
-          n ={
+          n = {
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
           }
@@ -110,6 +109,9 @@ return {
         },
         bookmarks = {
           theme = "ivy",
+        },
+        git_files = {
+          theme = "ivy",
         }
       },
 
@@ -141,7 +143,22 @@ return {
     M.project_files = function()
       local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
       if ret == 0 then
-        builtin.git_files(require('telescope.themes').get_ivy({ winblend = 15 }))
+        -- builtin.git_files(require('telescope.themes').get_ivy({ winblend = 15 }))
+        builtin.git_files(
+          {
+            shorten_path = false,
+            cwd = "~/.config/zsh/",
+            prompt = "~ dotfiles ~",
+            hidden = true,
+
+            layout_strategy = "horizontal",
+            layout_config = {
+              preview_width = 0.55,
+            },
+            find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
+            winblend = 15
+          }
+        )
       else
         builtin.find_files(require('telescope.themes').get_ivy({ winblend = 15 }))
       end
@@ -151,7 +168,8 @@ return {
 
     vim.api.nvim_set_keymap("n", "<leader>mr", "<CMD>Telescope oldfiles<CR>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>b", "<CMD>Telescope buffers<CR>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>ps", "<CMD>Telescope live_grep<cr>", { noremap = true })
+    vim.api.nvim_set_keymap("n", "<leader>ps", "<CMD>Telescope git_grep<cr>", { noremap = true })
+    vim.api.nvim_set_keymap("n", "<leader>pS", "<CMD>Telescope live_grep<cr>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>pc", "<CMD>Telescope colorscheme<cr>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>pm", "<CMD>Telescope marks<cr>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>pf", ":lua M.project_files()<cr>", { noremap = true })
@@ -198,6 +216,12 @@ return {
           "Documents",
           "DownloadsDocuments",
           ".meta",
+          "cache",
+          "node_modules",
+          ".git",
+          "yarn",
+          "fonts",
+          ".local",
         },
 
         layout_strategy = "flex",

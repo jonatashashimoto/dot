@@ -1,7 +1,8 @@
 return {
-  name = "bookmarks.nvim",
-  dir = "~/.config/nvim/bookmarks.nvim",
-  dev = true,
+  "tomasky/bookmarks.nvim",
+  -- name = "tomasky/bookmarks.nvim",
+  -- dir = "~/.config/nvim/bookmarks.nvim",
+  -- dev = true,
   dependencies = { "nvim-telescope/telescope.nvim" },
   config = function()
     require('bookmarks').setup({

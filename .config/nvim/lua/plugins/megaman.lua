@@ -1,0 +1,3 @@
+return {
+  "jojoyuji/megaman-vim",
+}

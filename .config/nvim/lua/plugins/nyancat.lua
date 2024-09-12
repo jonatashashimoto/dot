@@ -1,0 +1,3 @@
+return {
+  "jojoyuji/nyancat-vim",
+}

@@ -19,3 +19,5 @@ require("lazy").setup("plugins", {
     fallback = false, -- Fallback to git when local plugin doesn't exist
   },
 })
+
+return {}

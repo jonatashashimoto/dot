@@ -17,7 +17,7 @@ return {
           -- 'eslint-lsp',
           -- 'js-debug-adapter',
           -- 'prettier',
-          'tsserver',
+          'ts_ls',
         }
       }
     end
@@ -59,7 +59,7 @@ return {
 
       on_attach()
 
-      lspconfig.tsserver.setup({
+      lspconfig.ts_ls.setup({
         autostart = true,
         on_attach = on_attach,
         -- capabilities = {},
