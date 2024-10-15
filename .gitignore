@@ -4,4 +4,7 @@
 .config/nvim/bundle/**/*
 .config/nvim/lua/config/dap/adapters/**/*
 .config/StardewValley
+.config/containers
+.local/share
+.local/state
 node_modules
