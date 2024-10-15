@@ -67,12 +67,12 @@ return
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
         ["<C-s>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
-        ["<C-h>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+         ["<F6>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
         ["<C-t>"] = { "actions.select", opts = { tab = true }, desc = "Open the entry in new tab" },
         ["<C-p>"] = "actions.preview",
-        ["<C-c>"] = "actions.close",
-        ["<C-l>"] = "actions.refresh",
-        ["-"] = "actions.parent",
+        ["<C-q>"] = "actions.close",
+        ["<F5>"] = "actions.refresh",
+        ["<C-u>"] = "actions.parent",
         ["_"] = "actions.open_cwd",
         ["`"] = "actions.cd",
         ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },
@@ -82,7 +82,7 @@ return
         ["g\\"] = "actions.toggle_trash",
       },
       -- Set to false to disable all of the above keymaps
-      use_default_keymaps = true,
+      use_default_keymaps = false,
       view_options = {
         -- Show files and directories that start with "."
         show_hidden = true,

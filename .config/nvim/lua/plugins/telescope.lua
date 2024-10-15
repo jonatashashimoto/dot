@@ -143,22 +143,7 @@ return {
     M.project_files = function()
       local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
       if ret == 0 then
-        -- builtin.git_files(require('telescope.themes').get_ivy({ winblend = 15 }))
-        builtin.git_files(
-          {
-            shorten_path = false,
-            cwd = "~/.config/zsh/",
-            prompt = "~ dotfiles ~",
-            hidden = true,
-
-            layout_strategy = "horizontal",
-            layout_config = {
-              preview_width = 0.55,
-            },
-            find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
-            winblend = 15
-          }
-        )
+        builtin.git_files(require('telescope.themes').get_ivy({ winblend = 15 }))
       else
         builtin.find_files(require('telescope.themes').get_ivy({ winblend = 15 }))
       end

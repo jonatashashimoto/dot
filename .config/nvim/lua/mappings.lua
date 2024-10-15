@@ -26,7 +26,7 @@ bind("n", "<leader><up>", ':exe "resize " . (winheight(0) * 5/6)<cr>', { noremap
 bind("v", ";", ":", {})
 
 -- for surround plugin
-bind("v", "s", "S", {})
+-- bind("v", "s", "S", {})
 
 -- remove trailing white space
 vim.cmd([[nnoremap <leader>W :%s/\s\+$//<cr>:let @/='']])

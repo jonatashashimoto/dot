@@ -1,6 +1,8 @@
 return {
   'AndrewRadev/switch.vim',
+  lazy = false,
   config = function()
+    vim.cmd [[ let g:switch_mapping = '' ]]
     vim.api.nvim_set_keymap("n", "-", ":Switch<CR>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>-", ":e ~/.config/nvim/lua/plugins/switch.lua<CR>", { noremap = true })
 
@@ -49,7 +51,7 @@ return {
   \     '\(import\)\(.*\)\(from\s\)\(.*\)': 'const\2= require(\4)',
   \     '\(const\|var\|let\)\(.*\)\(=.*require(\)\(.*\)\()\)': 'import\2from \4'
   \   },
-  \   { 
+  \   {
   \     '- \[ \] \(.*\)': '- [x] \1',
   \     '- \[x\] \(.*\)': '- [ ] \1'
   \ },
@@ -58,6 +60,6 @@ return {
 
     -- vim.cmd [[ nnoremap <leader>1 yi":let @/ = @"<CR> ]]
   end
--- - [ ] hello
+  -- - [ ] hello
 
 }
