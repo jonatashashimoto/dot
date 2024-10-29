@@ -1,7 +1,12 @@
-return {
-  -- statusline
-  'windwp/windline.nvim',
-  config = function()
-    require('wlsample.vscode')
-  end
-}
+return {}
+-- return {
+--   -- statusline
+--   'windwp/windline.nvim',
+--   config = function()
+--     -- require('wlsample.vscode')
+--     -- require('wlsample.bubble')
+--     -- require('wlsample.bubble2')
+--     -- require('wlsample.airline')
+--     require('wlsample.evil_line')
+--   end
+-- }

@@ -37,6 +37,7 @@
   "listish.nvim": { "branch": "master", "commit": "3bc4bb02036f3802c6428c6232633d3192ac3604" },
   "lsp-progress.nvim": { "branch": "main", "commit": "d5f4d28efe75ce636bfbe271eb45f39689765aab" },
   "lspsaga.nvim": { "branch": "main", "commit": "3c1af059348350b0bbb81c5ca3c1f8f573dbd64a" },
+  "lualine.nvim": { "branch": "master", "commit": "b431d228b7bbcdaea818bdc3e25b8cdbe861f056" },
   "luasnip-snippets": { "branch": "main", "commit": "1ef819b87f279372c282bafc660263eabc880237" },
   "magma-nvim": { "branch": "main", "commit": "ff3deba8a879806a51c005e50782130246143d06" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "25c11854aa25558ee6c03432edfa0df0217324be" },
@@ -124,6 +125,5 @@
   "vimux": { "branch": "master", "commit": "7db6b2f79d432ee3820668b1d4625311dbe1d0ad" },
   "virt-column.nvim": { "branch": "master", "commit": "b62b4ef0774d19452d4ed18e473e824c7a756f2f" },
   "vscode-js-debug": { "branch": "main", "commit": "2249345ba43984d62a161bbe3b3bef02f8ff45e2" },
-  "w3m.vim": { "branch": "master", "commit": "228a852b188f1a62ecea55fa48b0ec892fa6bad7" },
-  "windline.nvim": { "branch": "master", "commit": "bef735787bef64697036774eca6418e7a786100b" }
+  "w3m.vim": { "branch": "master", "commit": "228a852b188f1a62ecea55fa48b0ec892fa6bad7" }
 }

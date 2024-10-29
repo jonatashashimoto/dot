@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -d "$1" ntfy.sh/$2

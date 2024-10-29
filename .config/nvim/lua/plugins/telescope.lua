@@ -14,6 +14,7 @@ return {
     local actions = require("telescope.actions")
     local themes = require "telescope.themes"
     local action_state = require("telescope.actions.state")
+    local builtin = require('telescope.builtin')
 
     require("telescope").setup({
       defaults = {
@@ -120,25 +121,45 @@ return {
 
 
     M = {}
-    M.my_buffer = function()
-      require("telescope.builtin").buffers({
+
+    buffer_searcher = function()
+      builtin.buffers {
+        sort_mru = true,
+        ignore_current_buffer = true,
+        show_all_buffers = false,
         attach_mappings = function(prompt_bufnr, map)
-          local delete_buf = function()
-            local selection = action_state.get_selected_entry()
+          local refresh_buffer_searcher = function()
             actions.close(prompt_bufnr)
-            vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+            vim.schedule(buffer_searcher)
           end
 
-          map("i", "<c-d>", delete_buf)
+          local delete_buf = function()
+            local selection = action_state.get_selected_entry()
+            vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+            refresh_buffer_searcher()
+          end
+
+          local delete_multiple_buf = function()
+            local picker = action_state.get_current_picker(prompt_bufnr)
+            local selection = picker:get_multi_selection()
+            for _, entry in ipairs(selection) do
+              vim.api.nvim_buf_delete(entry.bufnr, { force = true })
+            end
+            refresh_buffer_searcher()
+          end
+
+          map('n', 'dd', delete_buf)
+          map('n', '<C-d>', delete_buf)
+          map('i', '<C-d>', delete_buf)
+
           return true
-        end,
-      })
+        end
+      }
     end
 
-    vim.api.nvim_set_keymap("n", "<leader>b", ":lua M.my_buffer()<cr>", { noremap = true })
+    vim.keymap.set('n', '<leader>b', buffer_searcher, {})
 
     local utils = require('telescope.utils')
-    local builtin = require('telescope.builtin')
 
     M.project_files = function()
       local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
@@ -152,7 +173,7 @@ return {
     vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
 
     vim.api.nvim_set_keymap("n", "<leader>mr", "<CMD>Telescope oldfiles<CR>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>b", "<CMD>Telescope buffers<CR>", { noremap = true })
+    -- vim.api.nvim_set_keymap("n", "<leader>b", "<CMD>Telescope buffers<CR>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>ps", "<CMD>Telescope git_grep<cr>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>pS", "<CMD>Telescope live_grep<cr>", { noremap = true })
     vim.api.nvim_set_keymap("n", "<leader>pc", "<CMD>Telescope colorscheme<cr>", { noremap = true })

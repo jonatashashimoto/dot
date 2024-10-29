@@ -9,7 +9,6 @@ yabai -m config \
     window_animation_frame_rate 120 \
     window_opacity_duration 0.2 \
     window_border on \
-    window_border_width 10 \
     active_window_border_color 0xff775759 \
     normal_window_border_color 0xff555555 \
     window_opacity on \
@@ -27,16 +26,9 @@ yabai -m config \
     mouse_modifier alt \
     mouse_action1 move \
     mouse_action2 resize
-
 #   mouse_drop_action swap \
 #   external_bar all:48:0
 #   split_ratio 0.50 \
-
-# yabai -m config window_border on | off
-yabai -m config window_border_width 10
-yabai -m config active_window_border_color 0xff775759
-yabai -m config normal_window_border_color 0xff555555
-yabai -m window --toggle border
 
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
@@ -45,7 +37,4 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
 
-# brew tap FelixKratz/formulae
-# brew install borders
-# borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=10.0 style=rounded 2>/dev/null 1>&2 &
-borders active_color=0xff00ffdd inactive_color=0xff494d64 width=9.0 blur_radius=2.0 style=square 2>/dev/null 1>&2 &
+borders active_color=0xff00ffdd inactive_color=0x00494d64 width=5.0 blur_radius=1.0 style=round 2>/dev/null 1>&2 &
