@@ -17,18 +17,44 @@ yabai -m config \
     insert_feedback_color 0xffd75f5f \
     split_type auto \
     auto_balance off \
-    top_padding 8 \
-    bottom_padding 8 \
-    left_padding 8 \
-    right_padding 8 \
-    window_gap 6 \
-    layout bsp \
+    top_padding 56 \
+    bottom_padding 16 \
+    left_padding 16 \
+    right_padding 16 \
+    window_gap 12 \
+    layout stack \
     mouse_modifier alt \
     mouse_action1 move \
     mouse_action2 resize
 #   mouse_drop_action swap \
 #   external_bar all:48:0
 #   split_ratio 0.50 \
+
+
+yabai -m signal --add event=window_focused action="~/.config/yabai/hide_all_but_frontmost.sh" active=yes
+
+
+###############################################################################
+#                               Transparency
+###############################################################################
+
+yabai -m config window_opacity on
+
+# Make the below apps transparent
+apps_transparent="(Spotify|Alacritty|kitty)"
+yabai -m signal --add event=window_focused app="^${apps_transparent}$" action="yabai -m config active_window_opacity 0.85"
+yabai -m signal --add event=window_focused app="^${apps_transparent}$" action="yabai -m config normal_window_opacity 0.00001"
+
+# When any other app gains focus, reset both active and background window opacity to fully visible
+yabai -m signal --add event=window_focused app!="^${apps_transparent}$" action="yabai -m config active_window_opacity 1.0"
+yabai -m signal --add event=window_focused app!="^${apps_transparent}$" action="yabai -m config normal_window_opacity 1.0"
+
+# yabai -m signal --add event=window_focused app=".*CleanShot X.*" action="yabai -m config active_window_opacity 1.0"
+# yabai -m signal --add event=window_focused app=".*CleanShot X.*" action="yabai -m config normal_window_opacity 1.0"
+
+yabai -m rule --add app=".*" sub-layer=below
+
+###############################################################################
 
 # when window is dropped in center of another window, swap them (on edges it will split it)
 yabai -m mouse_drop_action swap
