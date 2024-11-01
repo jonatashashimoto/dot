@@ -91,6 +91,7 @@
   "telescope-dap.nvim": { "branch": "master", "commit": "8c88d9716c91eaef1cdea13cb9390d8ef447dbfe" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "3b8a1e17187cfeedb31decbd625da62398a8ff34" },
   "telescope-git-grep.nvim": { "branch": "main", "commit": "814217cb30c076bc5edebe36e525b05a7c9eb4b2" },
+  "telescope-mru.nvim": { "branch": "main", "commit": "91ac3a3cf32e25403f3fbc1f1074d673019bb811" },
   "telescope.nvim": { "branch": "master", "commit": "df534c3042572fb958586facd02841e10186707c" },
   "tmux-complete.vim": { "branch": "master", "commit": "87f6f96c73b599554d1d7f313413d7f9d0336096" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },

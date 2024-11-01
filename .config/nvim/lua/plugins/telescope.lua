@@ -18,6 +18,7 @@ return {
 
     require("telescope").setup({
       defaults = {
+
         theme = "center",
         mappings = {
           i = {
@@ -82,7 +83,8 @@ return {
         },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         -- shorten_path = true,
-        path_display = { "smart" },
+        --path_display = { "smart" },
+        path_display = { "filename_first" },
         winblend = 20,
         results_height = 1,
         results_width = 0.8,
@@ -112,6 +114,9 @@ return {
           theme = "ivy",
         },
         git_files = {
+          theme = "ivy",
+        },
+        mru_files = {
           theme = "ivy",
         }
       },
