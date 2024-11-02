@@ -132,6 +132,7 @@ bind("c", "<c-k>", "<c-p>", {})
 bind('n', '<leader>d', '\"_d', {})
 bind('v', '<leader>d', '\"_d', {})
 
+
 bind('x', "<leader>p", "\"_dP", {})
 -- copies current file dir to buffer
 bind('n', "<leader>fd", ":let @+ = expand('%:p:h')", {})

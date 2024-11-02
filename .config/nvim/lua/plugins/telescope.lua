@@ -12,7 +12,6 @@ return {
     require('telescope').load_extension('git_grep')
 
     local actions = require("telescope.actions")
-    local themes = require "telescope.themes"
     local action_state = require("telescope.actions.state")
     local builtin = require('telescope.builtin')
 

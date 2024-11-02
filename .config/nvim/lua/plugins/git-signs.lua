@@ -46,6 +46,9 @@ return {
         col = 1
       },
     }
+    vim.api.nvim_set_keymap('n', '[[', ':Gitsigns next_hunk<cr>', {})
+    vim.api.nvim_set_keymap('n', ']]', ':Gitsigns prev_hunk<cr>', {})
+
 
     -- vim.cmd [[
     -- augroup transparent_signs
