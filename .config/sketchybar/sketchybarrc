@@ -1,159 +1,68 @@
-BLUE=0xFF1E6E77
-PURPLE=0xFFA753EA
-RED=0xFFBE425E
-GREEN=0xFF7E9853
+#!/bin/bash
 
-# main bar & defaults
-sketchybar --bar height=54        \
-                 margin=12        \
-                 y_offset=0       \
-                 padding_left=0   \
-                 padding_right=0  \
-                 color=0x00000000
+DIR="$HOME/.config/sketchybar/"
+ITEM_DIR="$DIR/items"
+PLUGIN_DIR="$DIR/plugins"
 
-sketchybar --default updates=when_shown                             \
-                     icon.font="JetBrainsMono Nerd Font Mono:Normal:14.0"  \
-                     icon.color=0xFFFFFFFF                          \
-                     label.font="JetBrainsMono Nerd Font Mono:Normal:14.0" \
-                     background.color=0x00000000                    \
-                     y_offset=0
+FONT="JetBrainsMono Nerd Font"
+ICON_FONT="SF Pro"
 
-# ~~ left items ~~
+PADDING=6
 
-# space numbers
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
-SPACES=()
+source "$DIR/colors.sh"
+source "$DIR/icons.sh"
 
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid=$(($i+1))
-  SPACES+=(space.$sid)
-  sketchybar --add space space.$sid left \
-             --set space.$sid associated_space=$sid \
-                              icon=${SPACE_ICONS[i]} \
-                              icon.highlight_color=0xFFFFFFFF \
-                              icon.align=center \
-                              icon.width=30 \
-                              label.drawing=off \
-                              click_script="yabai -m space --focus $sid"
-done
+BAR_PROPS=(
+  height=36
+  color=$BG_PRI_COLR
+  shadow=off
+  position=top
+  sticky=on
+  padding_right=15
+  padding_left=15
+  corner_radius=10
+  y_offset=14
+  margin=14
+  blur_radius=30
+  notch_width=0
+)
 
-# create new space button
-sketchybar --add item new_space left                        \
-           --set      new_space icon.width=24               \
-                                label.padding_right=2       \
-                                icon.align=center           \
-                                icon.padding_right=2        \
-                                icon=+                      \
-                                click_script='./scripts/new_space.sh'
+DEF_PROPS=(
+  updates=when_shown
+  icon.font="$ICON_FONT:Regular:18.0"
+  icon.color=$WHITE
+  icon.padding_left=10
+  icon.padding_right=2
+  label.font="$FONT:Bold:14.0"
+  label.color=$WHITE
+  label.padding_left=$PADDING
+  label.padding_right=10
+  background.color=$BG_PRI_COLOR
+  background.padding_right=$PADDING
+  background.padding_left=$PADDING
+  background.height=22
+  background.corner_radius=8
+)
 
-# consolidate space numbers and add a background
-sketchybar --add bracket spaces '/space\..*/' new_space                \
-           --set         spaces background.color=0xEB1e1e2e            \
-                                background.corner_radius=15            \
-                                background.border_width=1              \
-                                background.border_color=$BLUE          \
-                                blur_radius=2                          \
-                                background.height=30
+sketchybar --bar "${BAR_PROPS[@]}"
+sketchybar --default "${DEF_PROPS[@]}"
 
-# add space highlighter dot
-sketchybar --add item highlight_space left                      \
-           --set      highlight_space width=22                  \
-                                      background.color=$BLUE    \
-                                      background.height=22      \
-                                      background.corner_radius=11 \
-                                      script='./scripts/highlight_space.sh'
+# -- LEFT Side Items --
+source "$ITEM_DIR/apple.sh"
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/front_app.sh"
 
-sketchybar --subscribe highlight_space space_change
-
-# overlay numbers above space highlighter dot
-for i in "${!SPACE_ICONS[@]}"
-do
-  sid=$(($i+1))
-  SPACES+=(space.$sid)
-  sketchybar --add space space_ex.$sid left \
-             --set space_ex.$sid associated_space=$sid \
-                              icon=${SPACE_ICONS[i]} \
-                              icon.highlight_color=0xFFFFFFFF \
-                              icon.align=center \
-                              icon.width=30 \
-                              label.drawing=off \
-                              click_script="yabai -m space --focus $sid"
-done
-
-sketchybar --set space_ex.1 padding_left=-999999
-
-# update defaults
-sketchybar --default                                                \
-                     background.color=0xEB1e1e2e                    \
-                     blur_radius=2                                  \
-                     background.corner_radius=15                    \
-                     background.height=30                           \
-                     icon.padding_left=12                           \
-                     icon.padding_right=4                           \
-                     label.padding_left=4                           \
-                     label.padding_right=12                         \
-                     background.padding_left=18                     \
-                     background.border_width=1
+# -- RIGHT Side Items --
+source "$ITEM_DIR/time.sh"
+source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/sound.sh"
+source "$ITEM_DIR/wifi.sh"
+source "$ITEM_DIR/cpu.sh"
+sketchybar --add item cat center \
+           --set cat icon=""\
+                     icon.font="$ICON_FONT:Regular:18.0" \
+                     icon.color=$DARK_WHITE\
+                     label.draw=off
 
 
-# ~~ center items ~~
-
-# app title
-sketchybar --add event title_change
-sketchybar --add item title center                                  \
-           --set      title label.padding_left=12                   \
-                            label="Title"                           \
-                            background.padding_left=0               \
-                            icon.padding_left=0                     \
-                            icon.padding_right=0                    \
-                            script='./scripts/title.sh'             \
-                            background.border_color=0x77ADADAD      \
-                            label.max_chars=100                      # \
-                            # scroll_texts=on                         \
-                            # label.scroll_duration=200
-
-sketchybar --subscribe title title_change window_focus front_app_switched space_change
-
-
-# ~~ right items ~~
-
-# time
-sketchybar --add item time right                                    \
-           --set      time icon=󱑎                                   \
-                           icon.color=$PURPLE                       \
-                           background.border_color=$PURPLE          \
-                           label="$(date '+%I:%M %p')"              \
-                           script='./scripts/time.sh'               \
-                           update_freq=1
-
-# date
-sketchybar --add item date right                                    \
-           --set      date icon=󱨰                                   \
-                           icon.color=$RED                          \
-                           background.border_color=$RED             \
-                           label="$(date '+%a %b %d')"              \
-                           script='./scripts/date.sh'               \
-                           update_freq=10
-
-# weather
-# sketchybar --add item weather right                                 \
-#            --set      weather icon=A                                \
-#                               icon.color=$BLUE                      \
-#                               background.border_color=$BLUE         \
-#                               label="--°F"                          \
-#                               script='./scripts/weather.sh'         \
-#                               update_freq=60
-
-# battery
-sketchybar --add item battery right                                 \
-           --set      battery icon=                                \
-                              icon.color=$GREEN                     \
-                              background.border_color=$GREEN        \
-                              label="--%"                           \
-                              script='./scripts/battery.sh'         \
-                              update_freq=20
-
-# finish config
-sketchybar --hotload on
 sketchybar --update

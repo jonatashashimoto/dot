@@ -26,7 +26,7 @@ bind("n", "<leader><up>", ':exe "resize " . (winheight(0) * 5/6)<cr>', { noremap
 bind("v", ";", ":", {})
 
 -- for surround plugin
--- bind("v", "s", "S", {})
+bind("v", "s", "S", {})
 
 -- remove trailing white space
 vim.cmd([[nnoremap <leader>W :%s/\s\+$//<cr>:let @/='']])
@@ -112,8 +112,8 @@ bind("n", "<leader>vz", ":e $HOME/.zshrc<cr><c-w>", {})
 bind("n", "<leader>va", ":e ~/.config/alacritty/alacritty.toml<cr><c-w>", {})
 
 
-bind("n", "<leader>vs", "<esc>:vsplit<cr>", {})
-bind("n", "<leader>vh", "<esc>:split<cr>", {})
+bind("n", "<leader>sv", "<esc>:vsplit<cr>", {})
+bind("n", "<leader>sh", "<esc>:split<cr>", {})
 -- bind("v", "y", "y:call ClipboardYank()<cr>", {noremap = true})
 -- bind("v", "d", "d:call ClipboardYank()<cr>", {noremap = true})
 -- bind("v", "x", "d:call ClipboardYank()<cr>", {noremap = true})
