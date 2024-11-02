@@ -39,6 +39,16 @@ return {
           { name = "path",     group_index = 2 },
         }, {
           { name = "buffer" },
+          {
+            name = "spell",
+            option = {
+              keep_all_entries = false,
+              enable_in_context = function()
+                return true
+              end,
+              preselect_correct_word = true,
+            },
+          },
         }),
       })
 
@@ -205,4 +215,8 @@ return {
   { "hrsh7th/cmp-cmdline",          dependencies = "nvim-cmp" },
   { "andersevenrud/cmp-tmux",       dependencies = "nvim-cmp" },
   { "hrsh7th/cmp-emoji",            dependencies = "nvim-cmp" },
+  {
+    "f3fora/cmp-spell",
+    dependencies = "nvim-cmp",
+  },
 }

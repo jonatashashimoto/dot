@@ -4,7 +4,6 @@ local bind = vim.api.nvim_set_keymap
 vim.cmd [[ inoremap <expr> <cr> getline(".")[col(".")-2:col(".")-1]=="{}" ? "<cr><esc>O" : "<cr>" ]]
 
 bind("n", "<leader>so", ":so %<cr>", { noremap = true, silent = false })
--- bind("n", "<leader>nt", ":e ~/GDrive/AOOP/boti/logs<cr>", {noremap = true})
 
 -- nnoremap ; :
 bind("n", ";", ":", { noremap = true })
@@ -31,23 +30,9 @@ bind("v", "s", "S", {})
 -- remove trailing white space
 vim.cmd([[nnoremap <leader>W :%s/\s\+$//<cr>:let @/='']])
 
--- fix for annoying man! (remaped for lsp)
--- bind("n", "K", "<nop>", {noremap = true})
-
--- use ,z to 'focus'   the current fold
--- bind("n", "<leader>z", "zmzvzz", {noremap = true})
-
 -- substitute
 bind("n", "<leader>ss", ":%s//<left>", {})
 vim.cmd([[ vmap <leader>ss :s/\%V//<left><left> ]])
-
--- Bubble single lines
-bind("n", "<c-a-j>", "]e", {})
-bind("n", "<c-a-k>", "[e", {})
-
--- Bubble multiple lines
-bind("v", "<c-a-k>", "]egv", {})
-bind("v", "<c-a-j>", "[egv", {})
 
 -- clear last highlight
 bind("n", "<leader><leader>", ":silent noh<cr>", { silent = true })
@@ -56,15 +41,8 @@ bind("n", "<leader>sfj", ":set filetype=javascript", { noremap = true })
 bind("n", "<leader>sfm", ":set filetype=markdown", { noremap = true })
 
 bind("n", "<leader>q", "<esc>:call FecharBuffer()<cr>", {})
--- vim.cmd([[ nnoremap <leader>q :call FecharBuffer()<cr> ]])
--- vim.cmd([[ autocmd FileType NvimTree nnoremap <leader>q :NvimTreeClose<cr> ]])
-
 
 bind("n", "<leader>og", ':!open -a "google chrome"  %<cr>', {})
-
--- folding
--- bind("n", "zr", "zR", {noremap = true})
--- bind("n", "zm", "zM", {noremap = true})
 
 --  no dollar sign at end of line
 bind("", "<leader>cd", ":cd %:p:h<cr>", {})
@@ -91,9 +69,6 @@ bind("n", "<leader>co", ":copen", { noremap = true })
 bind("n", "H", "<c-w>h", { noremap = true })
 bind("n", "L", "<c-w>l", { noremap = true })
 
--- bind("n", "<leader>sfi", ":set fdm=indent<cr>", { noremap = true })
--- bind("n", "<leader>sfm", ":set fdm=marker<cr>", { noremap = true })
-
 bind("n", "<leader>]", ":bn<cr>", { noremap = true })
 bind("n", "<leader>[", ":bp<cr>", { noremap = true })
 
@@ -114,10 +89,6 @@ bind("n", "<leader>va", ":e ~/.config/alacritty/alacritty.toml<cr><c-w>", {})
 
 bind("n", "<leader>sv", "<esc>:vsplit<cr>", {})
 bind("n", "<leader>sh", "<esc>:split<cr>", {})
--- bind("v", "y", "y:call ClipboardYank()<cr>", {noremap = true})
--- bind("v", "d", "d:call ClipboardYank()<cr>", {noremap = true})
--- bind("v", "x", "d:call ClipboardYank()<cr>", {noremap = true})
--- bind("n", "p", ":call ClipboardPaste()<cr>p", {noremap = true})
 
 -- ctrl+j/ctrl+i to iterate in list
 bind("i", "<c-j>", "<c-n>", {})
@@ -132,10 +103,10 @@ bind("c", "<c-k>", "<c-p>", {})
 bind('n', '<leader>d', '\"_d', {})
 bind('v', '<leader>d', '\"_d', {})
 
-
 bind('x', "<leader>p", "\"_dP", {})
 -- copies current file dir to buffer
 bind('n', "<leader>fd", ":let @+ = expand('%:p:h')", {})
+
 
 vim.api.nvim_set_keymap("n", "<leader>ob", ":e ~/GDrive/_NOTAS/obsidian", {})
 
@@ -146,43 +117,8 @@ vim.cmd [[
   vnoremap <leader>de :!python3 -c 'import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))'<cr>
 ]]
 
-vim.cmd( [[command! CPF :let @+ = system('node '.stdpath("config").'/myPlugins/plugin/node/geradorCPF.js')  | echo 'CPF: '.@+ ]])
 
-
-function get_visual_selection()
-  local s_start = vim.fn.getpos("'<")
-  local s_end = vim.fn.getpos("'>")
-  local n_lines = math.abs(s_end[2] - s_start[2]) + 1
-  local lines = vim.api.nvim_buf_get_lines(0, s_start[2] - 1, s_end[2], false)
-  lines[1] = string.sub(lines[1], s_start[3], -1)
-  if n_lines == 1 then
-    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3] - s_start[3] + 1)
-  else
-    lines[n_lines] = string.sub(lines[n_lines], 1, s_end[3])
-  end
-  return table.concat(lines, '\n')
-end
-
-function ExecuteFile(type)
-  local context
-  if (type == 'v') then
-    local selection = get_visual_selection()
-    print(selection:gsub("\\([nt])", { n = "\n", t = "\t" }))
-    context = "\"" .. selection:gsub("\\([nt])", { n = "\n", t = "\t" }) .. "\""
-  else
-    context = '%'
-  end
-  local lang = {
-    javascript = ':!ts-node ' .. context,
-    typescript = ':!npx tsx ' .. context
-  }
-  vim.cmd(lang[vim.bo.filetype])
-end
-
-vim.api.nvim_set_keymap('n', '<leader><cr>', ':lua ExecuteFile("n")<cr>', {})
-vim.api.nvim_set_keymap('v', '<leader><cr>', ':lua ExecuteFile("v")<cr>', {})
-
- -- NOTE: donot trigger autocmd when executing macro
+-- NOTE: donot trigger autocmd when executing macro
 -- https://www.reddit.com/r/neovim/comments/tsol2n/comment/i2ugipm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 vim.cmd([[
   xnoremap @ :<C-U>execute "noautocmd '<,'>norm! " . v:count1 . "@" . getcharstr()<cr>
