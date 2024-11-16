@@ -108,7 +108,7 @@ bind('x', "<leader>p", "\"_dP", {})
 bind('n', "<leader>fd", ":let @+ = expand('%:p:h')", {})
 
 
-vim.api.nvim_set_keymap("n", "<leader>ob", ":e ~/GDrive/_NOTAS/obsidian", {})
+vim.api.nvim_set_keymap("n", "<leader>ob", ":e ~/Google Drive/Meu Drive/_NOTAS/obsidian", {})
 
 
 --" URL encode/decode selection

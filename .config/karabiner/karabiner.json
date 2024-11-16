@@ -56,14 +56,13 @@
             ]
           },
           {
-            "description": "Launch Alacritty on right_control",
+            "description": "Launch Kitty on right_control",
             "manipulators": [
               {
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$"
+                      "^net\\.kovidgoyal\\.kitty$"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -73,7 +72,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open ~/alacritty/target/release/osx/Alacritty.app"
+                    "shell_command": "open /Applications/kitty.app"
                   }
                 ],
                 "type": "basic"
@@ -82,8 +81,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$"
+                      "^net\\.kovidgoyal\\.kitty$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -93,7 +91,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"alacritty\" to false' -e 'end tell' "
+                    "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"kitty\" to false' -e 'end tell' "
                   }
                 ],
                 "type": "basic"
@@ -101,14 +99,13 @@
             ]
           },
           {
-            "description": "Launch Alacritty on right_option",
+            "description": "Launch Kitty on right_option",
             "manipulators": [
               {
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$"
+                      "^net\\.kovidgoyal\\.kitty$"
                     ],
                     "type": "frontmost_application_unless"
                   }
@@ -118,7 +115,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "open ~/alacritty/target/release/osx/Alacritty.app"
+                    "shell_command": "open /Applications/kitty.app"
                   }
                 ],
                 "type": "basic"
@@ -127,8 +124,7 @@
                 "conditions": [
                   {
                     "bundle_identifiers": [
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$"
+                      "^net\\.kovidgoyal\\.kitty$"
                     ],
                     "type": "frontmost_application_if"
                   }
@@ -138,7 +134,7 @@
                 },
                 "to": [
                   {
-                    "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"alacritty\" to false' -e 'end tell' "
+                    "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"kitty\" to false' -e 'end tell' "
                   }
                 ],
                 "type": "basic"
@@ -566,7 +562,7 @@
           "to": [
             {
               "key_code": "grave_accent_and_tilde",
-              "modifiers":[
+              "modifiers": [
                 "left_command"
               ]
             }

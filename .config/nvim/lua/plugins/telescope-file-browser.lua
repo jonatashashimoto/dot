@@ -6,7 +6,7 @@ return {
     vim.api.nvim_set_keymap(
       "n",
       "<leader>nt",
-      ":Telescope file_browser path=~/GDrive/_NOTAS/obsidian select_buffer=true<CR>",
+      ":Telescope file_browser path=~/Google\\ Drive/My\\ Drive/_NOTAS/obsidian select_buffer=true<CR>",
       { noremap = true }
     )
 

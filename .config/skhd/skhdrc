@@ -71,3 +71,5 @@ shift + cmd - d : yabai -m window --resize right:-80:0
 shift + alt - r : yabai --restart-service && skhd --restart-service
 
 # shift + alt - o : yabai -m window --toggle sticky --toggle pip
+
+hyper - l : yabai -m space --layout "$(yabai -m query --spaces --space | jq -r '.type' | grep -q 'stack' && echo 'bsp' || echo 'stack')"

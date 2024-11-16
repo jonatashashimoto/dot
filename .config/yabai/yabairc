@@ -32,7 +32,7 @@ yabai -m config \
 
 
 yabai -m signal --add event=window_focused action="~/.config/yabai/hide_all_but_frontmost.sh" active=yes
-
+yabai -m signal --add event=window_resized action="~/.config/yabai/hide_all_but_frontmost.sh" active=yes
 
 ###############################################################################
 #                               Transparency
