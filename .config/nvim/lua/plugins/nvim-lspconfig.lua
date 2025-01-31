@@ -18,6 +18,18 @@ return {
           -- 'js-debug-adapter',
           -- 'prettier',
           'ts_ls',
+
+    -- svelte-language-server svelte (keywords: svelte)
+    -- fixjson (keywords: json)
+    -- json-lsp jsonls (keywords: json)
+    -- jsonlint (keywords: json)
+    -- lemminx (keywords: xml)
+    -- lua-language-server lua_ls (keywords: lua)
+    -- prettier (keywords: angular, css, flow, graphql, html, json, jsx, javascript, less, markdown, scss, typescript, vue, yaml)
+    -- tailwindcss-language-server tailwindcss (keywords: css)
+    -- typescript-language-server ts_ls (keywords: typescript, javascript)
+    -- vue-language-server volar (keywords: vue)
+    -- xmlformatter (keywords: xml)
         }
       }
     end

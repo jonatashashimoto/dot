@@ -340,7 +340,13 @@ export PATH=${PATH}:`go env GOPATH`/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export SAPNWRFC_HOME=/usr/local/sap/nwrfcsdk
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 # export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

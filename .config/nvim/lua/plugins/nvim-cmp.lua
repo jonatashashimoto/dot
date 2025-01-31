@@ -4,6 +4,8 @@ return {
     name = 'nvim-cmp',
     config = function()
       local cmp = require("cmp")
+
+
       cmp.setup({
         snippet = {
           -- REQUIRED - you must specify a snippet engine
@@ -27,6 +29,14 @@ return {
           { name = "luasnip" }, -- For luasnip users.
           { name = "emoji" },
           { name = "nvim_lsp" },
+          { name = 'nvim_lua' },
+          { name = 'calc' },
+          {
+            name = 'omni',
+            option = {
+              disable_omnifuncs = { 'v:lua.vim.lsp.omnifunc' }
+            }
+          },
 
           -- { name = "vsnip" }, -- For vsnip users.
           -- { name = 'ultisnips' }, -- For ultisnips users.
@@ -215,6 +225,10 @@ return {
   { "hrsh7th/cmp-cmdline",          dependencies = "nvim-cmp" },
   { "andersevenrud/cmp-tmux",       dependencies = "nvim-cmp" },
   { "hrsh7th/cmp-emoji",            dependencies = "nvim-cmp" },
+  { 'hrsh7th/cmp-calc',             dependencies = "nvim-cmp" },
+  { 'hrsh7th/cmp-nvim-lua',         dependencies = "nvim-cmp" },
+  { 'hrsh7th/cmp-omni',             dependencies = "nvim-cmp" },
+
   {
     "f3fora/cmp-spell",
     dependencies = "nvim-cmp",

@@ -1,4 +1,4 @@
-name: mux b
+name: muxb
 root: ~/
 # root: <%= @args[0] ? @args[0]: __dir__ %>
 

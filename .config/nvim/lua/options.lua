@@ -32,7 +32,7 @@ o.ttimeout = false
 o.timeout = false
 wo.foldmethod = "expr"
 wo.foldexpr = "nvim_treesitter#foldexpr()"
-wo.relativenumber = true
+wo.relativenumber = false
 wo.numberwidth = 5
 o.visualbell = true
 o.errorbells = true
@@ -63,10 +63,10 @@ o.gdefault = true
 o.wildmode = "list:longest,full"
 bo.infercase = true
 vim.opt.completeopt = { "menuone", "noselect" }
-o.backup = false
-o.writebackup = false
-bo.swapfile = false
-o.swapfile = false
+o.backup = true
+o.writebackup = true
+bo.swapfile = true
+o.swapfile = true
 wo.list = false
 bo.copyindent = true
 o.shiftround = true
@@ -117,3 +117,18 @@ end
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   callback = update_winbar,
 })
+
+ -- Backup files
+-- Double slash to build file name from the complete path to the file with all path separators changed to percent '%' signs
+vim.opt.backupdir = '/tmp/nvim-backup//'
+vim.opt.backup = true
+
+-- Add timestamp as extension for backup files
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   group = vim.api.nvim_create_augroup('timestamp_backupext', { clear = true }),
+--   desc = 'Add timestamp to backup extension',
+--   pattern = '*',
+--   callback = function()
+--     vim.opt.backupext = '-' .. vim.fn.strftime('%Y%m%d%H%M')
+--   end,
+-- })
