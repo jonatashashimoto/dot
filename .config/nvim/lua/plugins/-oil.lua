@@ -82,7 +82,7 @@ return
         ["g\\"] = "actions.toggle_trash",
       },
       -- Set to false to disable all of the above keymaps
-      use_default_keymaps = false,
+      use_default_keymaps = true,
       view_options = {
         -- Show files and directories that start with "."
         show_hidden = true,
@@ -187,6 +187,6 @@ return
         border = "rounded",
       },
     })
-    vim.keymap.set("n", "<leader><tab>", "<CMD>Oil<CR>")
+    -- vim.keymap.set("n", "<leader><tab>", "<CMD>Oil<CR>")
   end
 }

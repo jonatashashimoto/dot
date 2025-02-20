@@ -2,7 +2,7 @@
 # equals doesn't matter.
  background = 000000
 # foreground = ffcc00
-# theme = ayu
+theme = ayu
 
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 24
@@ -15,7 +15,7 @@ window-decoration = false
 ###########################
 
 # custom-shader = shaders/bettercrt.glsl
- custom-shader = shaders/bloom.glsl
+# custom-shader = shaders/bloom.glsl
 # custom-shader = shaders/crt.glsl
 # custom-shader = shaders/cubes.glsl
 # custom-shader = shaders/dither.glsl
