@@ -118,10 +118,11 @@ vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
   callback = update_winbar,
 })
 
+-- Double slash to build file name from the complete path to the file with all path separators changed to percent '%' signs
  -- Backup files
 -- Double slash to build file name from the complete path to the file with all path separators changed to percent '%' signs
-vim.opt.backupdir = '/tmp/nvim-backup//'
-vim.opt.backup = true
+-- vim.opt.backupdir = '/tmp/nvim-backup//'
+vim.opt.backup = false
 
 -- Add timestamp as extension for backup files
 -- vim.api.nvim_create_autocmd('BufWritePre', {

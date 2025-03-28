@@ -17,7 +17,7 @@ return {
           -- 'eslint-lsp',
           -- 'js-debug-adapter',
           -- 'prettier',
-          'ts_ls',
+          -- 'ts_ls',
 
           -- svelte-language-server svelte (keywords: svelte)
           -- fixjson (keywords: json)

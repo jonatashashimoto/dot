@@ -1,6 +1,5 @@
-name: Personal
-root: ~/projects/
-# root: <%= @args[0] ? @args[0]: __dir__ %>
+name: Lidera
+root: ~/git/lidera/
 
 
 # Optional tmux socket
