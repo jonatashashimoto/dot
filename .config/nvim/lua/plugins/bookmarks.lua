@@ -1,6 +1,6 @@
 return {
   "tomasky/bookmarks.nvim",
-  -- name = "tomasky/bookmarks.nvim",
+  -- Name = "tomasky/bookmarks.nvim",
   -- dir = "~/.config/nvim/bookmarks.nvim",
   -- dev = true,
   dependencies = { "nvim-telescope/telescope.nvim" },
@@ -10,9 +10,9 @@ return {
       save_file = vim.fn.expand "$HOME/.bookmark", -- bookmarks save file path
       keywords = {
         ["@t"] = "✪ ", -- mark annotation startswith @t ,signs this icon as `Todo`
-        ["@w"] = "⚠️ ", -- mark annotation startswith @w ,signs this icon as `Warn`
-        ["@f"] = "⛏ ", -- mark annotation startswith @f ,signs this icon as `Fix`
-        ["@n"] = " ", -- mark annotation startswith @n ,signs this icon as `Note`
+        ["@w"] = "⚠ ", -- mark annotation startswith @w ,signs this icon as `Warn`
+        ["@f"] = "☢ ", -- mark annotation startswith @f ,signs this icon as `Fix`
+        ["@n"] = "✎ ", -- mark annotation startswith @n ,signs this icon as `Note`
       },
       on_attach = function()
         local bm = require "bookmarks"
@@ -32,7 +32,6 @@ return {
     map("n", "ma", ':Telescope bookmarks list<cr>') -- add or remove bookmark at current line
 
 
-    local augroup = vim.api.nvim_create_augroup
     local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
     function dump(o)
       if type(o) == 'table' then

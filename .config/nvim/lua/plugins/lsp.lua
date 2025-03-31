@@ -1,5 +1,4 @@
 return {
-
   {
     'williamboman/mason.nvim',
     config = function()
@@ -14,6 +13,7 @@ return {
       require("mason-lspconfig").setup {
         ensure_installed = {
           "lua_ls",
+          "harper_ls",
           -- 'eslint-lsp',
           -- 'js-debug-adapter',
           -- 'prettier',
@@ -41,7 +41,6 @@ return {
       local on_attach = function(_, bufnr)
         -- Enable completion triggered by <c-x><c-o>
         -- vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
@@ -49,7 +48,7 @@ return {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
         -- vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
         vim.keymap.set("n", "gi", vim.lsp.buf.incoming_calls, bufopts)
-        vim.keymap.set("n", "<k-k>", vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set("n", "<c-k>", vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
         vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
         vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
@@ -69,7 +68,74 @@ return {
         vim.keymap.set("i", "<C-p>", vim.lsp.buf.hover, bufopts)
       end
 
+
       on_attach()
+      -- this works
+      vim.lsp.start({
+        name = 'lua-language-server',
+        cmd = { 'lua-language-server' },
+        root_dir = vim.fs.dirname(vim.fs.find({ '.git', '.vim', 'nvim' }, { upward = true })[1]),
+        settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+      })
+
+      -- -- this DOES NOT WORK
+      -- lspconfig.lua_ls.setup({
+      --   on_attach = on_attach,
+      --   -- capabilites = lsp_capabilities,
+      --   settings = {
+      --     Lua = {
+      --       completion = {
+      --         callSnippet = "Both",
+      --       },
+      --       diagnostics = {
+      --         disable = { "incomplete-signature-doc", "missing-fields" },
+      --         -- You could add more globals i.e., "vim" here, albeit w/o intellisense
+      --         globals = { "MiniMap" },
+      --       },
+      --       hint = {
+      --         enable = true,
+      --         arrayIndex = "Disable",
+      --       },
+      --       telemetry = { enable = false },
+      --       chcekThirdParty = false,
+      --       library = {
+      --         -- Make the server aware of Neovim runtime files
+      --         -- vim.fn.expand('$VIMRUNTIME/lua'),
+      --         -- vim.fn.stdpath('config') .. '/lua'
+      --       },
+      --     },
+      --   },
+      -- })
+
+  require('lspconfig').harper_ls.setup ({
+  settings = {
+    ["harper-ls"] = {
+      userDictPath = "",
+      fileDictPath = "",
+      linters = {
+        SpellCheck = true,
+        SpelledNumbers = false,
+        AnA = true,
+        SentenceCapitalization = true,
+        UnclosedQuotes = true,
+        WrongQuotes = false,
+        LongSentences = true,
+        RepeatedWords = true,
+        Spaces = true,
+        Matcher = true,
+        CorrectNumberSuffix = true
+      },
+      codeActions = {
+        ForceStable = false
+      },
+      markdown = {
+        IgnoreLinkTitle = false
+      },
+      diagnosticSeverity = "hint",
+      isolateEnglish = false
+    }
+  }
+})
 
       lspconfig.ts_ls.setup({
         autostart = true,
@@ -97,19 +163,6 @@ return {
           provideFormatter = true,
         },
       })
-      lspconfig.volar.setup({
-        on_attach = on_attach,
-        filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-        init_options = {
-          provideFormatter = true,
-        },
-      })
-      lspconfig.vuels.setup({
-        on_attach = on_attach,
-        init_options = {
-          provideFormatter = true,
-        },
-      })
       lspconfig.pyright.setup({
         on_attach = on_attach,
       })
@@ -119,51 +172,8 @@ return {
       lspconfig.tailwindcss.setup({
         on_attach = on_attach,
       })
-      lspconfig.gopls.setup({
-        on_attach = on_attach,
-      })
-      lspconfig.golangci_lint_ls.setup({
-        on_attach = on_attach,
-      })
 
-      -- example to setup lua_ls and enable call snippets
-      lspconfig.lua_ls.setup({
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = "Replace"
-            }
-          }
-        }
-      })
 
-      lspconfig.lua_ls.setup {
-        settings = {
-          Lua = {
-            -- runtime = {
-            -- Tell the language server which version of Lua you're using
-            -- (most likely LuaJIT in the case of Neovim)
-            -- version = 'LuaJIT',
-            -- },
-            diagnostics = {
-              -- Get the language server to recognize the `vim` global
-              globals = {
-                'vim',
-                'require'
-              },
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-              enable = true,
-            },
-          },
-        },
-      }
       lspconfig.emmet_language_server.setup({
         filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte", "vue" },
         -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
@@ -189,6 +199,18 @@ return {
           variables = {},
         },
       })
+
+      vim.diagnostic.config({ virtual_lines = { current_line = true } })
+      -- local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
+      -- for name, icon in pairs(symbols) do
+      --   local hl = "DiagnosticSign" .. name
+      --   vim.fn.sign_define(hl, { text = icon, numhl = hl, texthl = hl })
+      -- end
+      local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
     end
   }
 }

@@ -27,6 +27,7 @@ return {
   \   [ "addClass", "removeClass" ],
   \   [ "GET", "POST", "PUT", "DELETE", "PATCH" ],
   \   [ "get", "set" ],
+  \   [ "start", "end" ],
   \   [ "left", "right", "center" ],
   \   [ "width", "height" ],
   \   [ "error", "success", "warning" ],
