@@ -13,7 +13,7 @@ return {
       require("mason-lspconfig").setup {
         ensure_installed = {
           "lua_ls",
-          "harper_ls",
+          -- "harper_ls",
           -- 'eslint-lsp',
           -- 'js-debug-adapter',
           -- 'prettier',
@@ -71,71 +71,71 @@ return {
 
       on_attach()
       -- this works
-      vim.lsp.start({
-        name = 'lua-language-server',
-        cmd = { 'lua-language-server' },
-        root_dir = vim.fs.dirname(vim.fs.find({ '.git', '.vim', 'nvim' }, { upward = true })[1]),
-        settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
-      })
-
-      -- -- this DOES NOT WORK
-      -- lspconfig.lua_ls.setup({
-      --   on_attach = on_attach,
-      --   -- capabilites = lsp_capabilities,
-      --   settings = {
-      --     Lua = {
-      --       completion = {
-      --         callSnippet = "Both",
-      --       },
-      --       diagnostics = {
-      --         disable = { "incomplete-signature-doc", "missing-fields" },
-      --         -- You could add more globals i.e., "vim" here, albeit w/o intellisense
-      --         globals = { "MiniMap" },
-      --       },
-      --       hint = {
-      --         enable = true,
-      --         arrayIndex = "Disable",
-      --       },
-      --       telemetry = { enable = false },
-      --       chcekThirdParty = false,
-      --       library = {
-      --         -- Make the server aware of Neovim runtime files
-      --         -- vim.fn.expand('$VIMRUNTIME/lua'),
-      --         -- vim.fn.stdpath('config') .. '/lua'
-      --       },
-      --     },
-      --   },
+      -- vim.lsp.start({
+      --   name = 'lua-language-server',
+      --   cmd = { 'lua-language-server' },
+      --   root_dir = vim.fs.dirname(vim.fs.find({ '.git', '.vim', 'nvim' }, { upward = true })[1]),
+      --   settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
       -- })
 
-  require('lspconfig').harper_ls.setup ({
-  settings = {
-    ["harper-ls"] = {
-      userDictPath = "",
-      fileDictPath = "",
-      linters = {
-        SpellCheck = true,
-        SpelledNumbers = false,
-        AnA = true,
-        SentenceCapitalization = true,
-        UnclosedQuotes = true,
-        WrongQuotes = false,
-        LongSentences = true,
-        RepeatedWords = true,
-        Spaces = true,
-        Matcher = true,
-        CorrectNumberSuffix = true
-      },
-      codeActions = {
-        ForceStable = false
-      },
-      markdown = {
-        IgnoreLinkTitle = false
-      },
-      diagnosticSeverity = "hint",
-      isolateEnglish = false
-    }
-  }
-})
+      -- -- this DOES NOT WORK
+      lspconfig.lua_ls.setup({
+        on_attach = on_attach,
+        -- capabilites = lsp_capabilities,
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Both",
+            },
+            diagnostics = {
+              disable = { "incomplete-signature-doc", "missing-fields" },
+              -- You could add more globals i.e., "vim" here, albeit w/o intellisense
+              globals = { "MiniMap" },
+            },
+            hint = {
+              enable = true,
+              arrayIndex = "Disable",
+            },
+            telemetry = { enable = false },
+            chcekThirdParty = false,
+            library = {
+              -- Make the server aware of Neovim runtime files
+              -- vim.fn.expand('$VIMRUNTIME/lua'),
+              -- vim.fn.stdpath('config') .. '/lua'
+            },
+          },
+        },
+      })
+
+      -- require('lspconfig').harper_ls.setup({
+      --   settings = {
+      --     ["harper-ls"] = {
+      --       userDictPath = "",
+      --       fileDictPath = "",
+      --       linters = {
+      --         SpellCheck = true,
+      --         SpelledNumbers = false,
+      --         AnA = true,
+      --         SentenceCapitalization = true,
+      --         UnclosedQuotes = true,
+      --         WrongQuotes = false,
+      --         LongSentences = true,
+      --         RepeatedWords = true,
+      --         Spaces = true,
+      --         Matcher = true,
+      --         CorrectNumberSuffix = true
+      --       },
+      --       codeActions = {
+      --         ForceStable = false
+      --       },
+      --       markdown = {
+      --         IgnoreLinkTitle = false
+      --       },
+      --       diagnosticSeverity = "hint",
+      --       isolateEnglish = false
+      --     }
+      --   }
+      -- })
 
       lspconfig.ts_ls.setup({
         autostart = true,
@@ -143,7 +143,6 @@ return {
         -- capabilities = {},
 
         -- cmd = {'typescript-language-server', '--stdio'},
-        -- root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),
         root_dir = function(pattern)
           local cwd  = vim.loop.cwd();
           local root = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git")(pattern);
@@ -153,9 +152,15 @@ return {
           preferences = {
             -- disableSuggestions = true,
             provideFormatter = true,
+            disableSuggestions = true,
           },
         },
       })
+      lspconfig.pylsp.setup({
+        on_attach = on_attach,
+      })
+
+
       lspconfig.jsonls.setup({
         on_attach = on_attach,
         filetypes = { 'json' },
@@ -201,6 +206,7 @@ return {
       })
 
       vim.diagnostic.config({ virtual_lines = { current_line = true } })
+      -- vim.diagnostic.config({ virtual_text = true })
       -- local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
       -- for name, icon in pairs(symbols) do
       --   local hl = "DiagnosticSign" .. name

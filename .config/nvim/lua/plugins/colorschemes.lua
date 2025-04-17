@@ -35,7 +35,8 @@ return {
 
       })
 
-      vim.cmd([[colorscheme gruvbox]])
+      -- vim.cmd([[colorscheme gruvbox]])
+      -- vim.cmd([[colorscheme tokyonight]])
       -- vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
       -- vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
       -- vim.cmd([[hi Folded guibg=#333333 ]])
@@ -43,7 +44,22 @@ return {
   },
   "folke/tokyonight.nvim",
   "wojciechkepka/bogster",
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    config = function()
+      vim.cmd("colorscheme rose-pine")
+      -- vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
+    end
+  },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  {
+    'rebelot/kanagawa.nvim',
+    name = 'kanagawa',
+    config = function()
+      -- vim.cmd("colorscheme kanagawa")
+    end
+  },
   {
     'sainnhe/everforest',
     config = function()

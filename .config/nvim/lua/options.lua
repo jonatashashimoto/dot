@@ -78,7 +78,7 @@ vim.opt.guicursor = {
   'a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor',
   'sm:block-blinkwait175-blinkoff150-blinkon175',
 }
-vim.cmd [[ set signcolumn=yes:2 ]]
+vim.cmd [[ set signcolumn=yes:2]]
 
 -- vim.cmd(string.format([[highlight WinBar1 guifg=%s]], #ffffff))
 -- vim.cmd(string.format([[highlight WinBar2 guifg=%s]], #000000))

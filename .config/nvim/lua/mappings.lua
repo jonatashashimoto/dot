@@ -87,8 +87,8 @@ bind("n", "<leader>vz", ":e $HOME/.zshrc<cr><c-w>", {})
 bind("n", "<leader>va", ":e ~/.config/alacritty/alacritty.toml<cr><c-w>", {})
 
 
-bind("n", "<leader>sv", "<esc>:vsplit<cr>", {})
-bind("n", "<leader>sh", "<esc>:split<cr>", {})
+bind("n", "<leader>vs", "<esc>:vsplit<cr>", {})
+bind("n", "<leader>hs", "<esc>:split<cr>", {})
 
 -- ctrl+j/ctrl+i to iterate in list
 bind("i", "<c-j>", "<c-n>", {})
