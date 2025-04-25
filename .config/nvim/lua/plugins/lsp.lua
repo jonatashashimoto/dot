@@ -36,6 +36,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = { 'saghen/blink.cmp' },
     config = function()
       local lspconfig = require("lspconfig")
       local on_attach = function(_, bufnr)
@@ -78,10 +79,13 @@ return {
       --   settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
       -- })
 
+      -- BLINK CONFIG
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+
       -- -- this DOES NOT WORK
       lspconfig.lua_ls.setup({
         on_attach = on_attach,
-        -- capabilites = lsp_capabilities,
+        capabilites = capabilities,
         settings = {
           Lua = {
             completion = {
@@ -140,7 +144,7 @@ return {
       lspconfig.ts_ls.setup({
         autostart = true,
         on_attach = on_attach,
-        -- capabilities = {},
+        capabilites = capabilities,
 
         -- cmd = {'typescript-language-server', '--stdio'},
         root_dir = function(pattern)
@@ -158,28 +162,34 @@ return {
       })
       lspconfig.pylsp.setup({
         on_attach = on_attach,
+        capabilites = capabilities,
       })
 
 
       lspconfig.jsonls.setup({
         on_attach = on_attach,
         filetypes = { 'json' },
+        capabilites = capabilities,
         init_options = {
           provideFormatter = true,
         },
       })
       lspconfig.pyright.setup({
         on_attach = on_attach,
+        capabilites = capabilities,
       })
       lspconfig.svelte.setup({
         on_attach = on_attach,
+        capabilites = capabilities,
       })
       lspconfig.tailwindcss.setup({
         on_attach = on_attach,
+        capabilites = capabilities,
       })
 
 
       lspconfig.emmet_language_server.setup({
+        capabilites = capabilities,
         filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte", "vue" },
         -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
         -- **Note:** only the options listed in the table are supported.
@@ -204,6 +214,10 @@ return {
           variables = {},
         },
       })
+
+
+
+
 
       vim.diagnostic.config({ virtual_lines = { current_line = true } })
       -- vim.diagnostic.config({ virtual_text = true })

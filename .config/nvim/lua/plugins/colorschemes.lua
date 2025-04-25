@@ -3,6 +3,9 @@ return {
   "sainnhe/edge",
   "sainnhe/sonokai",
   {
+    'sainnhe/gruvbox-material'
+  },
+  {
     "ellisonleao/gruvbox.nvim",
     config = function()
       local colors = require('gruvbox').palette
@@ -35,7 +38,7 @@ return {
 
       })
 
-      -- vim.cmd([[colorscheme gruvbox]])
+      vim.cmd([[colorscheme gruvbox]])
       -- vim.cmd([[colorscheme tokyonight]])
       -- vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
       -- vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
@@ -48,7 +51,7 @@ return {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
-      vim.cmd("colorscheme rose-pine")
+      -- vim.cmd("colorscheme rose-pine")
       -- vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
     end
   },
