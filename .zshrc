@@ -10,22 +10,6 @@ esac
 function exists() {
   command -v "$1" >/dev/null 2>&1
 }
-function upvim(){
-  cd ~/
-  if [[ $OS == 'OSX' ]]; then
-    echo 'nvim:osx'
-    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz
-    tar -xf nvim-macos-arm64.tar.gz
-    # mv ./nvim-osx64/bin/nvim /usr/local/bin/
-  fi
-  if [[ $OS == 'linux' ]]; then
-    echo 'nvim:linux'
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x nvim.appimage
-    ./nvim.appimage
-
-  fi
-}
 function upalacritty(){
   cd ~/alacritty
   git pull origin HEAD
@@ -79,7 +63,6 @@ alias nvi='nvim'
 alias im='nvim'
 alias vim='nvim'
 alias v='nvim'
-alias nvim='~/nvim-macos-arm64/bin/nvim'
 
 alias stat='gotop -c monokai'
 alias irc= 'weechat';
@@ -185,6 +168,12 @@ alias mp3='yt-dlp  -x --audio-format mp3 --audio-quality 0 $1'
 # Prezto
 [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]] && source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 
+
+
+source "$HOME/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$HOME/.config/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh"
+source "$HOME/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
 # ZPlug
 [[ -f ~/.zplug/init.zsh ]] && source ~/.zplug/init.zsh
 
@@ -193,6 +182,7 @@ zplug "Valiev/almostontop"
 zplug "djui/alias-tips"
 zplug "arzzen/calc.plugin.zsh"
 zplug "akoenig/npm-run.plugin.zsh"
+zplug "zsh-users/zsh-autosuggestions"
 
 zplug load
 # tabtab source for serverless package
@@ -202,6 +192,53 @@ zplug load
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+
+#ZSH THEME
+# source .config/zsh/themes/ultima.zsh-theme
+source .config/zsh/themes/headline.zsh-theme
+HL_SEP_MODE='on'
+HL_INFO_MODE='auto'
+HL_OVERWRITE='on'
+HL_SEP=(
+  _PRE  '╭' # consider '┌' or '╭'
+  _LINE '━' # consider '─'
+  _POST '╮' # consider '┐' or '╮'
+)
+HL_LAYOUT_STYLE="%{$light_black%}"
+HL_LAYOUT_TEMPLATE=(
+  _PRE    "│${IS_SSH+ %{$reset$faint%\}ssh}" # shows " ssh" if this is an SSH session
+  USER    ' ...'
+  HOST    " %{$reset$faint%}at%{$reset$HL_LAYOUT_STYLE%} ..."
+  VENV    " %{$reset$faint%}with%{$reset$HL_LAYOUT_STYLE%} ..."
+  PATH    " %{$reset$faint%}in%{$reset$HL_LAYOUT_STYLE%} ..."
+  _SPACER ''
+  BRANCH  " %{$reset$faint%}on%{$reset$HL_LAYOUT_STYLE%} ..."
+  STATUS  ' ...'
+  _POST   ' │'
+)
+HL_LAYOUT_FIRST=(
+  HOST    ' ...'
+  VENV    ' ...'
+  PATH    ' ...'
+  _SPACER ' '
+  BRANCH  ' ...'
+)
+HL_CONTENT_TEMPLATE=(
+  USER   "%{$bold$red%} ..."
+  HOST   "%{$bold$yellow%} ..."
+  VENV   "%{$bold$green%} ..."
+  PATH   "%{$bold$blue%} ..."
+  BRANCH "%{$bold$cyan%} ..."
+  STATUS "%{$bold$magenta%}..."
+)
+HL_GIT_SEP_SYMBOL=''
+HL_GIT_STATUS_SYMBOLS[CONFLICTS]="%{$red%}✘"
+HL_GIT_STATUS_SYMBOLS[CLEAN]="%{$green%}✔"
+HL_PROMPT="%{$HL_LAYOUT_STYLE%}╯ %{$reset%}$ "
+HL_CLOCK_MODE='on'
+HL_CLOCK_TEMPLATE="%{$faint%} ... %{$reset$HL_LAYOUT_STYLE%}╰"
+HL_ERR_MODE='on'
 
 # # fix perl error on ack.vim
 export LC_CTYPE=en_US.UTF-8
@@ -332,6 +369,8 @@ fi
 ###-end-npm-completion-###
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='*'
+bindkey -v
+source <(fzf --zsh)
 
 
 eval "$(zoxide init zsh)"
@@ -349,6 +388,3 @@ export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 # export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
