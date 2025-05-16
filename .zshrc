@@ -64,6 +64,7 @@ alias im='nvim'
 alias vim='nvim'
 alias v='nvim'
 
+
 alias stat='gotop -c monokai'
 alias irc= 'weechat';
 # List all files colorized in long format
@@ -76,6 +77,8 @@ alias ls='eza --icons'
 alias top='bpytop' #brew install bpytop
 alias cat='bat' #brew install bat
 alias chrom="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window --app=https://youtube.com"
+
+alias mux='sesh connect $(sesh list | fzf)'
 
 # alias sharemux="gotty tmux new-session -A -s jojolitos"
 # brew install yudai/gotty/gotty
@@ -121,7 +124,7 @@ fi
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 	alias "$method"="lwp-request -m '$method'"
 done
-alias mux='tmuxinator'
+
 alias server='http-server -p 4000 -i true'
 
 alias gitDeleteLocalBranches='git branch | grep -v "master" | xargs git branch -D'
@@ -181,8 +184,6 @@ zplug "bobthecow/git-flow-completion"
 zplug "Valiev/almostontop"
 zplug "djui/alias-tips"
 zplug "arzzen/calc.plugin.zsh"
-zplug "akoenig/npm-run.plugin.zsh"
-zplug "zsh-users/zsh-autosuggestions"
 
 zplug load
 # tabtab source for serverless package
@@ -196,49 +197,7 @@ zplug load
 
 #ZSH THEME
 # source .config/zsh/themes/ultima.zsh-theme
-source .config/zsh/themes/headline.zsh-theme
-HL_SEP_MODE='on'
-HL_INFO_MODE='auto'
-HL_OVERWRITE='on'
-HL_SEP=(
-  _PRE  '╭' # consider '┌' or '╭'
-  _LINE '━' # consider '─'
-  _POST '╮' # consider '┐' or '╮'
-)
-HL_LAYOUT_STYLE="%{$light_black%}"
-HL_LAYOUT_TEMPLATE=(
-  _PRE    "│${IS_SSH+ %{$reset$faint%\}ssh}" # shows " ssh" if this is an SSH session
-  USER    ' ...'
-  HOST    " %{$reset$faint%}at%{$reset$HL_LAYOUT_STYLE%} ..."
-  VENV    " %{$reset$faint%}with%{$reset$HL_LAYOUT_STYLE%} ..."
-  PATH    " %{$reset$faint%}in%{$reset$HL_LAYOUT_STYLE%} ..."
-  _SPACER ''
-  BRANCH  " %{$reset$faint%}on%{$reset$HL_LAYOUT_STYLE%} ..."
-  STATUS  ' ...'
-  _POST   ' │'
-)
-HL_LAYOUT_FIRST=(
-  HOST    ' ...'
-  VENV    ' ...'
-  PATH    ' ...'
-  _SPACER ' '
-  BRANCH  ' ...'
-)
-HL_CONTENT_TEMPLATE=(
-  USER   "%{$bold$red%} ..."
-  HOST   "%{$bold$yellow%} ..."
-  VENV   "%{$bold$green%} ..."
-  PATH   "%{$bold$blue%} ..."
-  BRANCH "%{$bold$cyan%} ..."
-  STATUS "%{$bold$magenta%}..."
-)
-HL_GIT_SEP_SYMBOL=''
-HL_GIT_STATUS_SYMBOLS[CONFLICTS]="%{$red%}✘"
-HL_GIT_STATUS_SYMBOLS[CLEAN]="%{$green%}✔"
-HL_PROMPT="%{$HL_LAYOUT_STYLE%}╯ %{$reset%}$ "
-HL_CLOCK_MODE='on'
-HL_CLOCK_TEMPLATE="%{$faint%} ... %{$reset$HL_LAYOUT_STYLE%}╰"
-HL_ERR_MODE='on'
+# source .config/zsh/themes/refined.zsh-theme
 
 # # fix perl error on ack.vim
 export LC_CTYPE=en_US.UTF-8
@@ -265,23 +224,6 @@ export PATH=usr/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/.local/bin:$PATH"
-export PATH="/usr/local/heroku/bin:$PATH"
-export PNPM_HOME="/Users/jojo/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-
-# if [ -d "/usr/local/opt/ruby/bin" ]; then
-#   export PATH=/usr/local/opt/ruby/bin:$PATH
-#   export PATH=`gem environment gemdir`/bin:$PATH
-# ob Igercase "$OSTYPE" in
-
-# pnpm
-export PNPM_HOME="/Users/jojo/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-export PATH="$GOPATH/bin":$PATH
-#pnpm end
-
-
 
 export OPENAI_API_KEY="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"
 # bun completions
@@ -298,79 +240,12 @@ zstyle ':completion:*:kill:*' force-list always
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 
-###-begin-npm-completion-###
-#
-# npm command completion script
-#
-# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
-#
-
-if type complete &>/dev/null; then
-  _npm_completion () {
-    local words cword
-    if type _get_comp_words_by_ref &>/dev/null; then
-      _get_comp_words_by_ref -n = -n @ -n : -w words -i cword
-    else
-      cword="$COMP_CWORD"
-      words=("${COMP_WORDS[@]}")
-    fi
-
-    local si="$IFS"
-    if ! IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           npm completion -- "${words[@]}" \
-                           2>/dev/null)); then
-      local ret=$?
-      IFS="$si"
-      return $ret
-    fi
-    IFS="$si"
-    if type __ltrim_colon_completions &>/dev/null; then
-      __ltrim_colon_completions "${words[cword]}"
-    fi
-  }
-  complete -o default -F _npm_completion npm
-elif type compdef &>/dev/null; then
-  _npm_completion() {
-    local si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 npm completion -- "${words[@]}" \
-                 2>/dev/null)
-    IFS=$si
-  }
-  compdef _npm_completion npm
-elif type compctl &>/dev/null; then
-  _npm_completion () {
-    local cword line point words si
-    read -Ac words
-    read -cn cword
-    let cword-=1
-    read -l line
-    read -ln point
-    si="$IFS"
-    if ! IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       npm completion -- "${words[@]}" \
-                       2>/dev/null)); then
-
-      local ret=$?
-      IFS="$si"
-      return $ret
-    fi
-    IFS="$si"
-  }
-  compctl -K _npm_completion npm
-fi
-###-end-npm-completion-###
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_COMPLETION_TRIGGER='*'
 bindkey -v
 source <(fzf --zsh)
+# END FZF
 
 
 eval "$(zoxide init zsh)"

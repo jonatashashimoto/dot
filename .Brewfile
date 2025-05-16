@@ -1,10 +1,13 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 
+brew "zsh"
+brew "tmux"
+brew "sesh"
 brew "wget"
 brew "node"
 brew "fzf"
-brew "sesh"
+brew "gum"
 
 cask "google-chrome"
 cask "ghostty"
