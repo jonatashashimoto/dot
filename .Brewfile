@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 
+brew "git"
 brew "zsh"
 brew "tmux"
 brew "sesh"

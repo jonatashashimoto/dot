@@ -12,6 +12,7 @@ background-blur-radius = 10
 window-decoration = false
 cursor-color = #b42455
 macos-titlebar-style = hidden
+window-padding-balance = true
 
 ###########################
 # SHADERS

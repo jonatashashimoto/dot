@@ -15,6 +15,7 @@
                     "bundle_identifiers": [
                       "^io\\.alacritty$",
                       "^org\\.alacritty$",
+                      "^org\\.qutebrowser\\.qutebrowser$",
                       "^com\\.mitchellh\\.ghostty",
                       "^com\\.apple\\.Terminal$",
                       "^net\\.kovidgoyal\\.kitty$"
@@ -38,6 +39,7 @@
                     "bundle_identifiers": [
                       "^io\\.alacritty$",
                       "^org\\.alacritty$",
+                      "^org\\.qutebrowser\\.qutebrowser$",
                       "^com\\.mitchellh\\.ghostty",
                       "^com\\.apple\\.Terminal$",
                       "^net\\.kovidgoyal\\.kitty$"
