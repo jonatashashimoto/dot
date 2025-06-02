@@ -104,9 +104,9 @@ local function update_winbar()
   local home_replaced = get_winbar_path()
   local buffer_count = get_buffer_count()
   vim.opt.winbar = "%#WinBar1#%m "
-      .. "%#WinBar2#("
+      .. "[%#WinBar2#"
       .. buffer_count
-      .. ") "
+      .. "]"
       .. "%#WinBar1#"
       .. home_replaced
       .. "%*%=%#WinBar2#"

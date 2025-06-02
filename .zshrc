@@ -57,12 +57,28 @@ alias cls="clear"
 alias lg="lazygit"
 
 
+alias nvim='~/nvim-macos-arm64/bin/nvim'
 alias ni='nvim'
 alias nv='nvim'
 alias nvi='nvim'
 alias im='nvim'
-alias vim='nvim'
 alias v='nvim'
+ function upvim(){
+  cd ~/
+  if [[ $OS == 'OSX' ]]; then
+    echo 'nvim:osx'
+    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-macos-arm64.tar.gz
+    tar -xf nvim-macos-arm64.tar.gz
+    # mv ./nvim-osx64/bin/nvim /usr/local/bin/
+  fi
+  if [[ $OS == 'linux' ]]; then
+    echo 'nvim:linux'
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod u+x nvim.appimage
+    ./nvim.appimage
+
+  fi
+}
 
 
 alias stat='gotop -c monokai'

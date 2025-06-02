@@ -33,7 +33,7 @@ return {}
 --         concealcursor = "nvic",
 --       },
 --       -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
---       delete_to_trash = false,
+--       delete_to_trash = true,
 --       -- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
 --       skip_confirm_for_simple_edits = false,
 --       -- Selecting a new/moved/renamed file or directory will prompt you to save changes first
@@ -72,7 +72,7 @@ return {}
 --         ["<C-p>"] = "actions.preview",
 --         ["<C-q>"] = "actions.close",
 --         ["<F5>"] = "actions.refresh",
---         ["<C-u>"] = "actions.parent",
+--         ["h"] = "actions.parent",
 --         ["_"] = "actions.open_cwd",
 --         ["`"] = "actions.cd",
 --         ["~"] = { "actions.cd", opts = { scope = "tab" }, desc = ":tcd to the current oil directory" },

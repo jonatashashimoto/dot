@@ -3,7 +3,13 @@ return {
   "sainnhe/edge",
   "sainnhe/sonokai",
   {
-    'sainnhe/gruvbox-material'
+    'sainnhe/gruvbox-material',
+    config = function()
+      vim.cmd [[
+        let g:gruvbox_material_foreground = 'hard'
+        let g:gruvbox_material_background = 'hard'
+      ]]
+    end
   },
   {
     "ellisonleao/gruvbox.nvim",
@@ -29,7 +35,7 @@ return {
         invert_intend_guides = true,
         inverse = true, -- invert background for search, diffs, statuslines
         dim_inactive = false,
-        transparent_mode = false,
+        transparent_mode = true,
         overrides = {
           String = { fg = colors.bright_aqua },
           ["@method.call"] = { fg = colors.bright_yellow },
@@ -38,9 +44,9 @@ return {
 
       })
 
-      vim.cmd([[colorscheme gruvbox]])
+      vim.cmd([[colorscheme gruvbox-material]])
       -- vim.cmd([[colorscheme tokyonight]])
-      -- vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
+      vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
       -- vim.api.nvim_set_keymap('n', '<leader>tb', ':hi Normal guibg=NONE ctermbg=NONE<cr>', {})
       -- vim.cmd([[hi Folded guibg=#333333 ]])
     end

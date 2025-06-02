@@ -1,315 +1,316 @@
-return {
+return {}
+-- return {
 
-  -- telescope stuff
-  "nvim-telescope/telescope.nvim",
-  dependencies = {
-    { "nvim-lua/popup.nvim" },
-    { "nvim-lua/plenary.nvim" },
-    { "tami5/sql.nvim" },
-    { 'davvid/telescope-git-grep.nvim' }
-  },
-  config = function()
-    require('telescope').load_extension('git_grep')
+--   -- telescope stuff
+--   "nvim-telescope/telescope.nvim",
+--   dependencies = {
+--     { "nvim-lua/popup.nvim" },
+--     { "nvim-lua/plenary.nvim" },
+--     { "tami5/sql.nvim" },
+--     { 'davvid/telescope-git-grep.nvim' }
+--   },
+--   config = function()
+--     require('telescope').load_extension('git_grep')
 
-    local actions = require("telescope.actions")
-    local action_state = require("telescope.actions.state")
-    local builtin = require('telescope.builtin')
+--     local actions = require("telescope.actions")
+--     local action_state = require("telescope.actions.state")
+--     local builtin = require('telescope.builtin')
 
-    require 'telescope'.setup {
-      extensions = {
-        media_files = {
-          -- filetypes whitelist
-          -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-          filetypes = { "png", "webp", "jpg", "jpeg" },
-          -- find command (defaults to `fd`)
-          find_cmd = "rg"
-        }
-      },
-    }
+--     require 'telescope'.setup {
+--       extensions = {
+--         media_files = {
+--           -- filetypes whitelist
+--           -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+--           filetypes = { "png", "webp", "jpg", "jpeg" },
+--           -- find command (defaults to `fd`)
+--           find_cmd = "rg"
+--         }
+--       },
+--     }
 
-    require("telescope").setup({
-      defaults = {
+--     require("telescope").setup({
+--       defaults = {
 
-        theme = "center",
-        mappings = {
-          i = {
-            -- ["<esc>"] = actions.close,
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
-          },
-          n = {
-            ["<C-j>"] = actions.move_selection_next,
-            ["<C-k>"] = actions.move_selection_previous,
-          }
-        },
-        vimgrep_arguments = {
-          "rg",
-          "--color=never",
-          "--no-heading",
-          "--with-filename",
-          "--line-number",
-          "--column",
-          "--smart-case",
-        },
-        selection_caret = "> ",
-        entry_prefix = "  ",
-        initial_mode = "insert",
-        selection_strategy = "reset",
-        sorting_strategy = "descending",
-        layout_strategy = "vertical",
-        -- layout_strategy = "horizontal",
-        -- layout_defaults = {
-        --   horizontal = {
-        --     mirror = false,
-        --   },
-        --   vertical = {
-        --     mirror = false,
-        --   },
-        -- },
-        layout_config = {
-          horizontal = {
-            width = 0.75,
-          },
-          vertical = {
-            height = 0.95,
-          },
-          prompt_position = "bottom",
-          -- prompt_prefix = "> ",
-          preview_cutoff = 120,
-          -- preview_cutoff = 1,
-        },
-        file_sorter = require("telescope.sorters").get_fuzzy_file,
-        file_ignore_patterns = {
-          "%.pdf",
-          "%.png",
-          "%.jpeg",
-          "%.jpg",
-          "%.opus",
-          "%.ogg",
-          "%.mp3",
-          "%.m4p",
-          "%.ttf",
-          "%.gz",
-          "%.zip",
-        },
-        generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-        -- shorten_path = true,
-        --path_display = { "smart" },
-        path_display = { "filename_first" },
-        winblend = 20,
-        results_height = 1,
-        results_width = 0.8,
-        border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        color_devicons = true,
-        use_less = true,
-        set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+--         theme = "center",
+--         mappings = {
+--           i = {
+--             -- ["<esc>"] = actions.close,
+--             ["<C-j>"] = actions.move_selection_next,
+--             ["<C-k>"] = actions.move_selection_previous,
+--           },
+--           n = {
+--             ["<C-j>"] = actions.move_selection_next,
+--             ["<C-k>"] = actions.move_selection_previous,
+--           }
+--         },
+--         vimgrep_arguments = {
+--           "rg",
+--           "--color=never",
+--           "--no-heading",
+--           "--with-filename",
+--           "--line-number",
+--           "--column",
+--           "--smart-case",
+--         },
+--         selection_caret = "> ",
+--         entry_prefix = "  ",
+--         initial_mode = "normal",
+--         selection_strategy = "reset",
+--         sorting_strategy = "descending",
+--         layout_strategy = "vertical",
+--         -- layout_strategy = "horizontal",
+--         -- layout_defaults = {
+--         --   horizontal = {
+--         --     mirror = false,
+--         --   },
+--         --   vertical = {
+--         --     mirror = false,
+--         --   },
+--         -- },
+--         layout_config = {
+--           horizontal = {
+--             width = 0.75,
+--           },
+--           vertical = {
+--             height = 0.95,
+--           },
+--           prompt_position = "bottom",
+--           -- prompt_prefix = "> ",
+--           preview_cutoff = 120,
+--           -- preview_cutoff = 1,
+--         },
+--         file_sorter = require("telescope.sorters").get_fuzzy_file,
+--         file_ignore_patterns = {
+--           "%.pdf",
+--           "%.png",
+--           "%.jpeg",
+--           "%.jpg",
+--           "%.opus",
+--           "%.ogg",
+--           "%.mp3",
+--           "%.m4p",
+--           "%.ttf",
+--           "%.gz",
+--           "%.zip",
+--         },
+--         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+--         -- shorten_path = true,
+--         --path_display = { "smart" },
+--         path_display = { "filename_first" },
+--         winblend = 20,
+--         results_height = 1,
+--         results_width = 0.8,
+--         border = {},
+--         borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+--         color_devicons = true,
+--         use_less = true,
+--         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+--         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+--         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+--         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
-        -- Developer configurations: Not meant for general override
-        buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
-      },
-      pickers = {
-        oldfiles = {
-          theme = "ivy",
-        },
-        buffers = {
-          theme = "ivy",
-        },
-        vim_bookmarks = {
-          initial_mode = "normal"
-        },
-        bookmarks = {
-          theme = "ivy",
-        },
-        git_files = {
-          theme = "ivy",
-        },
-        mru_files = {
-          theme = "ivy",
-        }
-      },
+--         -- Developer configurations: Not meant for general override
+--         buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+--       },
+--       pickers = {
+--         oldfiles = {
+--           theme = "ivy",
+--         },
+--         buffers = {
+--           theme = "ivy",
+--         },
+--         vim_bookmarks = {
+--           initial_mode = "normal"
+--         },
+--         bookmarks = {
+--           theme = "ivy",
+--         },
+--         git_files = {
+--           theme = "ivy",
+--         },
+--         mru_files = {
+--           theme = "ivy",
+--         }
+--       },
 
-    })
-
-
-
-    M = {}
-
-    buffer_searcher = function()
-      builtin.buffers {
-        sort_mru = true,
-        ignore_current_buffer = true,
-        show_all_buffers = false,
-        attach_mappings = function(prompt_bufnr, map)
-          local refresh_buffer_searcher = function()
-            actions.close(prompt_bufnr)
-            vim.schedule(buffer_searcher)
-          end
-
-          local delete_buf = function()
-            local selection = action_state.get_selected_entry()
-            vim.api.nvim_buf_delete(selection.bufnr, { force = true })
-            refresh_buffer_searcher()
-          end
-
-          local delete_multiple_buf = function()
-            local picker = action_state.get_current_picker(prompt_bufnr)
-            local selection = picker:get_multi_selection()
-            for _, entry in ipairs(selection) do
-              vim.api.nvim_buf_delete(entry.bufnr, { force = true })
-            end
-            refresh_buffer_searcher()
-          end
-
-          map('n', 'dd', delete_buf)
-          map('n', '<C-d>', delete_buf)
-          map('i', '<C-d>', delete_buf)
-
-          return true
-        end
-      }
-    end
-
-    vim.keymap.set('n', '<leader>b', buffer_searcher, {})
-
-    local utils = require('telescope.utils')
-
-    M.project_files = function()
-      local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
-      if ret == 0 then
-        builtin.git_files(require('telescope.themes').get_ivy({ winblend = 15 }))
-      else
-        builtin.find_files(require('telescope.themes').get_ivy({ winblend = 15 }))
-      end
-    end
-    -- project_files()
-    vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
-
-    vim.api.nvim_set_keymap("n", "<leader>mr", "<CMD>Telescope oldfiles<CR>", { noremap = true })
-    -- vim.api.nvim_set_keymap("n", "<leader>b", "<CMD>Telescope buffers<CR>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>ps", "<CMD>Telescope git_grep<cr>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>pS", "<CMD>Telescope live_grep<cr>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>pc", "<CMD>Telescope colorscheme<cr>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>pm", "<CMD>Telescope marks<cr>", { noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>pf", ":lua M.project_files()<cr>", { noremap = true })
-
-    SHOULD_RELOAD_TELESCOPE = true
-    local reloader = function()
-      if SHOULD_RELOAD_TELESCOPE then
-        R "plenary"
-        R "telescope"
-        R "tj.telescope.setup"
-      end
-    end
-
-    -- local actions = require "telescope.actions"
-    -- local action_state = require "telescope.actions.state"
-
-    local set_prompt_to_entry_value = function(prompt_bufnr)
-      local entry = action_state.get_selected_entry()
-      if not entry or not type(entry) == "table" then
-        return
-      end
-
-      action_state.get_current_picker(prompt_bufnr):reset_prompt(entry.ordinal)
-    end
-
-    -- local M = {}
-    vim.api.nvim_set_keymap("n", "<leader>pv", ":lua M.edit_neovim()<cr>", { noremap = true })
-    -- vim.api.nvim_set_keymap("n", "/", ":lua M.curbuf()<cr>", { noremap = true })
+--     })
 
 
-    function M.edit_neovim()
-      local opts_with_preview, opts_without_preview
 
-      opts_with_preview = {
-        prompt_title = "~ dotfiles ~",
-        shorten_path = false,
-        cwd = "~/dot/",
-        hidden = true,
+--     M = {}
 
-        -- search_dirs = { "~/", "~/.config/nvim/", "~/.config/alacritty/", "~/.config/skhd/", "~/.config/yabai/" },
-        file_ignore_patterns = {
-          "Library",
-          "Desktop",
-          "Documents",
-          "DownloadsDocuments",
-          ".meta",
-          "cache",
-          "node_modules",
-          ".git",
-          "yarn",
-          "fonts",
-          ".local",
-        },
+--     buffer_searcher = function()
+--       builtin.buffers {
+--         sort_mru = true,
+--         ignore_current_buffer = true,
+--         show_all_buffers = false,
+--         attach_mappings = function(prompt_bufnr, map)
+--           local refresh_buffer_searcher = function()
+--             actions.close(prompt_bufnr)
+--             vim.schedule(buffer_searcher)
+--           end
 
-        layout_strategy = "flex",
-        layout_config = {
-          width = 0.9,
-          height = 0.8,
+--           local delete_buf = function()
+--             local selection = action_state.get_selected_entry()
+--             vim.api.nvim_buf_delete(selection.bufnr, { force = true })
+--             refresh_buffer_searcher()
+--           end
 
-          horizontal = {
-            width = { padding = 0.15 },
-          },
-          vertical = {
-            preview_height = 0.75,
-          },
-        },
+--           local delete_multiple_buf = function()
+--             local picker = action_state.get_current_picker(prompt_bufnr)
+--             local selection = picker:get_multi_selection()
+--             for _, entry in ipairs(selection) do
+--               vim.api.nvim_buf_delete(entry.bufnr, { force = true })
+--             end
+--             refresh_buffer_searcher()
+--           end
 
-        mappings = {
-          i = {
-            ["<C-y>"] = false,
-          },
-        },
+--           map('n', 'dd', delete_buf)
+--           map('n', '<C-d>', delete_buf)
+--           map('i', '<C-d>', delete_buf)
 
-        attach_mappings = function(_, map)
-          map("i", "<c-y>", set_prompt_to_entry_value)
-          map("i", "<M-c>", function(prompt_bufnr)
-            actions.close(prompt_bufnr)
-            vim.schedule(function()
-              require("telescope.builtin").find_files(opts_without_preview)
-            end)
-          end)
+--           return true
+--         end
+--       }
+--     end
 
-          return true
-        end,
-      }
+--     vim.keymap.set('n', '<leader>b', buffer_searcher, {})
 
-      opts_without_preview = vim.deepcopy(opts_with_preview)
-      opts_without_preview.previewer = false
+--     local utils = require('telescope.utils')
 
-      require("telescope.builtin").find_files(opts_with_preview)
-    end
+--     M.project_files = function()
+--       local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+--       if ret == 0 then
+--         builtin.git_files(require('telescope.themes').get_ivy({ winblend = 15 }))
+--       else
+--         builtin.find_files(require('telescope.themes').get_ivy({ winblend = 15 }))
+--       end
+--     end
+--     -- project_files()
+--     vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
 
-    function M.find_nvim_source()
-      require("telescope.builtin").find_files {
-        prompt_title = "~ nvim ~",
-        shorten_path = false,
-        cwd = "~/build/neovim/",
+--     vim.api.nvim_set_keymap("n", "<leader>mr", "<CMD>Telescope oldfiles<CR>", { noremap = true })
+--     -- vim.api.nvim_set_keymap("n", "<leader>b", "<CMD>Telescope buffers<CR>", { noremap = true })
+--     vim.api.nvim_set_keymap("n", "<leader>ps", "<CMD>Telescope git_grep<cr>", { noremap = true })
+--     vim.api.nvim_set_keymap("n", "<leader>pS", "<CMD>Telescope live_grep<cr>", { noremap = true })
+--     vim.api.nvim_set_keymap("n", "<leader>pc", "<CMD>Telescope colorscheme<cr>", { noremap = true })
+--     vim.api.nvim_set_keymap("n", "<leader>pm", "<CMD>Telescope marks<cr>", { noremap = true })
+--     vim.api.nvim_set_keymap("n", "<leader>pf", ":lua M.project_files()<cr>", { noremap = true })
 
-        layout_strategy = "horizontal",
-        layout_config = {
-          preview_width = 0.35,
-        },
-      }
-    end
+--     SHOULD_RELOAD_TELESCOPE = true
+--     local reloader = function()
+--       if SHOULD_RELOAD_TELESCOPE then
+--         R "plenary"
+--         R "telescope"
+--         R "tj.telescope.setup"
+--       end
+--     end
 
-    function M.edit_zsh()
-      require("telescope.builtin").find_files {
-        shorten_path = false,
-        cwd = "~/.config/zsh/",
-        prompt = "~ dotfiles ~",
-        hidden = true,
+--     -- local actions = require "telescope.actions"
+--     -- local action_state = require "telescope.actions.state"
 
-        layout_strategy = "horizontal",
-        layout_config = {
-          preview_width = 0.55,
-        },
-        find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
-      }
-    end
-  end
-}
+--     local set_prompt_to_entry_value = function(prompt_bufnr)
+--       local entry = action_state.get_selected_entry()
+--       if not entry or not type(entry) == "table" then
+--         return
+--       end
+
+--       action_state.get_current_picker(prompt_bufnr):reset_prompt(entry.ordinal)
+--     end
+
+--     -- local M = {}
+--     vim.api.nvim_set_keymap("n", "<leader>pv", ":lua M.edit_neovim()<cr>", { noremap = true })
+--     -- vim.api.nvim_set_keymap("n", "/", ":lua M.curbuf()<cr>", { noremap = true })
+
+
+--     function M.edit_neovim()
+--       local opts_with_preview, opts_without_preview
+
+--       opts_with_preview = {
+--         prompt_title = "~ dotfiles ~",
+--         shorten_path = false,
+--         cwd = "~/dot/",
+--         hidden = true,
+
+--         -- search_dirs = { "~/", "~/.config/nvim/", "~/.config/alacritty/", "~/.config/skhd/", "~/.config/yabai/" },
+--         file_ignore_patterns = {
+--           "Library",
+--           "Desktop",
+--           "Documents",
+--           "DownloadsDocuments",
+--           ".meta",
+--           "cache",
+--           "node_modules",
+--           ".git",
+--           "yarn",
+--           "fonts",
+--           ".local",
+--         },
+
+--         layout_strategy = "flex",
+--         layout_config = {
+--           width = 0.9,
+--           height = 0.8,
+
+--           horizontal = {
+--             width = { padding = 0.15 },
+--           },
+--           vertical = {
+--             preview_height = 0.75,
+--           },
+--         },
+
+--         mappings = {
+--           i = {
+--             ["<C-y>"] = false,
+--           },
+--         },
+
+--         attach_mappings = function(_, map)
+--           map("i", "<c-y>", set_prompt_to_entry_value)
+--           map("i", "<M-c>", function(prompt_bufnr)
+--             actions.close(prompt_bufnr)
+--             vim.schedule(function()
+--               require("telescope.builtin").find_files(opts_without_preview)
+--             end)
+--           end)
+
+--           return true
+--         end,
+--       }
+
+--       opts_without_preview = vim.deepcopy(opts_with_preview)
+--       opts_without_preview.previewer = false
+
+--       require("telescope.builtin").find_files(opts_with_preview)
+--     end
+
+--     function M.find_nvim_source()
+--       require("telescope.builtin").find_files {
+--         prompt_title = "~ nvim ~",
+--         shorten_path = false,
+--         cwd = "~/build/neovim/",
+
+--         layout_strategy = "horizontal",
+--         layout_config = {
+--           preview_width = 0.35,
+--         },
+--       }
+--     end
+
+--     function M.edit_zsh()
+--       require("telescope.builtin").find_files {
+--         shorten_path = false,
+--         cwd = "~/.config/zsh/",
+--         prompt = "~ dotfiles ~",
+--         hidden = true,
+
+--         layout_strategy = "horizontal",
+--         layout_config = {
+--           preview_width = 0.55,
+--         },
+--         find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
+--       }
+--     end
+--   end
+-- }
