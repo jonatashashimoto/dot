@@ -5,6 +5,9 @@
 .config/nvim/lua/config/dap/adapters/**/*
 .config/StardewValley
 .config/containers
+.config/gloud
+.local/bin
+.local/pipx
 .local/share
 .local/state
 node_modules
