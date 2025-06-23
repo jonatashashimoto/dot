@@ -219,8 +219,8 @@ return {
 
 
 
-      vim.diagnostic.config({ virtual_lines = { current_line = true } })
-      -- vim.diagnostic.config({ virtual_text = true })
+      -- vim.diagnostic.config({ virtual_lines = { current_line = true } })
+      vim.diagnostic.config({ virtual_text = true })
       -- local symbols = { Error = "󰅙", Info = "󰋼", Hint = "󰌵", Warn = "" }
       -- for name, icon in pairs(symbols) do
       --   local hl = "DiagnosticSign" .. name
