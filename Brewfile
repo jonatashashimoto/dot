@@ -23,3 +23,4 @@ brew "flashspace"
 
 cask "google-chrome"
 cask "ghostty"
+cask "zen"
