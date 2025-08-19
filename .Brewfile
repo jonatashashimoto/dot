@@ -19,6 +19,7 @@ brew "rbenv"
 brew "yabai"
 brew "skhd"
 brew "sketchybar"
+brew "flashspace"
 
 cask "google-chrome"
 cask "ghostty"

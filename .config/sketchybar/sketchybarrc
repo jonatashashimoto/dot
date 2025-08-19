@@ -1,11 +1,11 @@
 #!/bin/bash
 
-DIR="$HOME/.config/sketchybar/"
+DIR="$HOME/.config/sketchybar"
 ITEM_DIR="$DIR/items"
 PLUGIN_DIR="$DIR/plugins"
 
 FONT="JetBrainsMono Nerd Font"
-ICON_FONT="SF Pro"
+ICON_FONT="JetBrainsMono Nerd Font"
 
 PADDING=6
 
@@ -33,7 +33,7 @@ DEF_PROPS=(
   icon.color=$WHITE
   icon.padding_left=10
   icon.padding_right=2
-  label.font="$FONT:Bold:14.0"
+  label.font="$FONT:Bold:18.0"
   label.color=$WHITE
   label.padding_left=$PADDING
   label.padding_right=10
