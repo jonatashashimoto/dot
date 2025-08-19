@@ -279,3 +279,5 @@ export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 # export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"

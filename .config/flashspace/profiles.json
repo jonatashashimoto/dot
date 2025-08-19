@@ -1,0 +1,75 @@
+{
+  "profiles" : [
+    {
+      "id" : "CFD3D7A3-1122-45B1-A6AF-7040B3BB4DE1",
+      "name" : "Default",
+      "workspaces" : [
+        {
+          "appToFocus" : {
+            "bundleIdentifier" : "app.zen-browser.zen",
+            "iconPath" : "/Applications/Zen.app/Contents/Resources/firefox.icns",
+            "name" : "Zen"
+          },
+          "apps" : [
+            {
+              "bundleIdentifier" : "app.zen-browser.zen",
+              "iconPath" : "/Applications/Zen.app/Contents/Resources/firefox.icns",
+              "name" : "Zen"
+            }
+          ],
+          "display" : "DELL U3223QE",
+          "id" : "A21DB8AA-308A-4EC0-B7F2-00031328AF2E",
+          "name" : "Personal",
+          "shortcut" : "cmd+ctrl+opt+shift+1",
+          "symbolIconName" : "person.crop.circle.badge.plus"
+        },
+        {
+          "appToFocus" : {
+            "bundleIdentifier" : "com.mitchellh.ghostty",
+            "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+            "name" : "Ghostty"
+          },
+          "apps" : [
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
+              "name" : "Ghostty"
+            },
+            {
+              "bundleIdentifier" : "com.google.Chrome",
+              "iconPath" : "/Applications/Google Chrome.app/Contents/Resources/app.icns",
+              "name" : "Google Chrome"
+            }
+          ],
+          "display" : "DELL U3223QE",
+          "id" : "28CA7F90-99D3-46E2-A975-FFD4BDB34949",
+          "name" : "Work",
+          "shortcut" : "cmd+ctrl+opt+shift+2",
+          "symbolIconName" : "network"
+        },
+        {
+          "apps" : [
+            {
+              "bundleIdentifier" : "org.jkiss.dbeaver.core.product",
+              "iconPath" : "/Applications/DBeaver.app/Contents/Resources/dbeaver.icns",
+              "name" : "DBeaver Community"
+            }
+          ],
+          "display" : "DELL U3223QE",
+          "id" : "EC40801F-58B3-42B0-A3F0-4C4B3B1CC445",
+          "name" : "DB",
+          "shortcut" : "cmd+ctrl+opt+shift+3"
+        },
+        {
+          "apps" : [
+
+          ],
+          "display" : "DELL U3223QE",
+          "id" : "BFCD7988-3069-4803-B170-99C80A8EC62E",
+          "name" : "Notes",
+          "shortcut" : "cmd+ctrl+opt+shift+4"
+        }
+      ]
+    }
+  ]
+}
