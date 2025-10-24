@@ -2,8 +2,8 @@
 # equals doesn't matter.
 background = 000000
 # foreground = ffcc00
-# theme = ayu
-theme = catppuccin-frappe
+ theme = ayu
+#theme = catppuccin-frappe
 
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 24
