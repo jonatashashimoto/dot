@@ -4,7 +4,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = true },
+    snacksbigfile = { enabled = true },
     dashboard = { enabled = false },
     explorer = { enabled = false },
     indent = { enabled = true },
@@ -81,8 +81,8 @@ return {
     { "gr",              function() Snacks.picker.lsp_references() end,                          nowait = true,                     desc = "References" },
     { "gI",              function() Snacks.picker.lsp_implementations() end,                     desc = "Goto Implementation" },
     { "gy",              function() Snacks.picker.lsp_type_definitions() end,                    desc = "Goto T[y]pe Definition" },
-    { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
-    { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
+    -- { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,                             desc = "LSP Symbols" },
+    -- { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end,                   desc = "LSP Workspace Symbols" },
     -- Other
     { "<leader>z",       function() Snacks.zen() end,                                            desc = "Toggle Zen Mode" },
     { "<leader>Z",       function() Snacks.zen.zoom() end,                                       desc = "Toggle Zoom" },

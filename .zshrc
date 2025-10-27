@@ -275,6 +275,7 @@ export NVM_DIR="$HOME/.nvm"
 export SAPNWRFC_HOME=/usr/local/sap/nwrfcsdk
 
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages:$PATH"
 export PATH="$(brew --prefix)/opt/python@3/libexec/bin:$PATH"
 # export PATH="/opt/homebrew/opt/python@3.13/libexec/bin:$PATH"
 # The next line updates PATH for the Google Cloud SDK.

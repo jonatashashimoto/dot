@@ -56,7 +56,7 @@ return {
     -- elsewhere in your config, without redefining it, due to `opts_extend`
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer', 'emoji' },
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'emoji', 'omni', 'cmdline' },
       providers = {
         emoji = {
           name = "emoji",

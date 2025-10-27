@@ -15,6 +15,11 @@
               "bundleIdentifier" : "app.zen-browser.zen",
               "iconPath" : "/Applications/Zen.app/Contents/Resources/firefox.icns",
               "name" : "Zen"
+            },
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/AppIcon.icns",
+              "name" : "Ghostty"
             }
           ],
           "display" : "DELL U3223QE",
@@ -24,21 +29,16 @@
           "symbolIconName" : "person.crop.circle.badge.plus"
         },
         {
-          "appToFocus" : {
-            "bundleIdentifier" : "com.mitchellh.ghostty",
-            "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-            "name" : "Ghostty"
-          },
           "apps" : [
-            {
-              "bundleIdentifier" : "com.mitchellh.ghostty",
-              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/Ghostty.icns",
-              "name" : "Ghostty"
-            },
             {
               "bundleIdentifier" : "com.google.Chrome",
               "iconPath" : "/Applications/Google Chrome.app/Contents/Resources/app.icns",
               "name" : "Google Chrome"
+            },
+            {
+              "bundleIdentifier" : "com.mitchellh.ghostty",
+              "iconPath" : "/Applications/Ghostty.app/Contents/Resources/AppIcon.icns",
+              "name" : "Ghostty"
             }
           ],
           "display" : "DELL U3223QE",

@@ -37,6 +37,10 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = { 'saghen/blink.cmp' },
+    -- opts = function(_, opts)
+    --   opts.diagnostics.virtual_text = false
+    --   return opts
+    -- end,
     config = function()
       local lspconfig = require("lspconfig")
       local on_attach = function(_, bufnr)
