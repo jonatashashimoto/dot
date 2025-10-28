@@ -24,6 +24,7 @@ brew "sketchybar"
 brew "flashspace"
 brew "isort"
 brew "prettierd"
+brew "urlview"
 
 cask "google-chrome"
 cask "ghostty"
