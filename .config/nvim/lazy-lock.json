@@ -6,7 +6,6 @@
   "arshlib.nvim": { "branch": "master", "commit": "111fd439268adda206a24b133096893869a50764" },
   "auto-create-dirs.nvim": { "branch": "main", "commit": "ab13191fad7e3f023193148fe418b8047eeb0d59" },
   "auto-pandoc.nvim": { "branch": "main", "commit": "1e28cbb1de644be466a36a009c6fd3b7950cacf7" },
-  "beacon.nvim": { "branch": "master", "commit": "098ff96c33874339d5e61656f3050dbd587d6bd5" },
   "blink.cmp": { "branch": "main", "commit": "327fff91fe6af358e990be7be1ec8b78037d2138" },
   "blink.compat": { "branch": "main", "commit": "1454f14a8d855a578ceeba77c62538fa1459a67c" },
   "bogster": { "branch": "master", "commit": "22a5de0a52ca16cc4cb1966b7318fbe6c2e241ca" },
