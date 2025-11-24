@@ -19,6 +19,10 @@ vim.opt_local.formatoptions:remove({ 'r', 'o', 'c' })
 vim.g.mapleader = " "
 
 vim.g.maplocalleader = " "
+vim.opt.confirm = false
+vim.o.autowriteall = true
+
+
 
 o.mouse = 'nv'
 vim.opt.undofile = true

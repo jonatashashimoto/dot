@@ -13,8 +13,9 @@ return {
       require("mason-lspconfig").setup {
         ensure_installed = {
           "lua_ls",
+          'marksman',
           -- "harper_ls",
-          -- 'eslint-lsp',
+          -- 'eslit-lsp',
           -- 'js-debug-adapter',
           -- 'prettier',
           -- 'ts_ls',
@@ -118,36 +119,6 @@ return {
           },
         },
       })
-
-      -- require('lspconfig').harper_ls.setup({
-      --   settings = {
-      --     ["harper-ls"] = {
-      --       userDictPath = "",
-      --       fileDictPath = "",
-      --       linters = {
-      --         SpellCheck = true,
-      --         SpelledNumbers = false,
-      --         AnA = true,
-      --         SentenceCapitalization = true,
-      --         UnclosedQuotes = true,
-      --         WrongQuotes = false,
-      --         LongSentences = true,
-      --         RepeatedWords = true,
-      --         Spaces = true,
-      --         Matcher = true,
-      --         CorrectNumberSuffix = true
-      --       },
-      --       codeActions = {
-      --         ForceStable = false
-      --       },
-      --       markdown = {
-      --         IgnoreLinkTitle = false
-      --       },
-      --       diagnosticSeverity = "hint",
-      --       isolateEnglish = false
-      --     }
-      --   }
-      -- })
 
       lspconfig.ts_ls.setup({
         autostart = true,
