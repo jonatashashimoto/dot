@@ -25,6 +25,8 @@ brew "flashspace"
 brew "isort"
 brew "prettierd"
 brew "urlview"
+brew "imagemagick"
+brew "pngpaste"
 
 cask "google-chrome"
 cask "ghostty"

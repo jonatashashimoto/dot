@@ -1,630 +1,458 @@
 {
-  "global": {
-    "show_in_menu_bar": false
-  },
-  "profiles": [
-    {
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "Swap control/command in Terminal",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^org\\.qutebrowser\\.qutebrowser$",
-                      "^com\\.mitchellh\\.ghostty",
-                      "^com\\.apple\\.Terminal$",
-                      "^net\\.kovidgoyal\\.kitty$"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "left_command"
-                },
-                "to": [
-                  {
-                    "key_code": "left_control"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^io\\.alacritty$",
-                      "^org\\.alacritty$",
-                      "^org\\.qutebrowser\\.qutebrowser$",
-                      "^com\\.mitchellh\\.ghostty",
-                      "^com\\.apple\\.Terminal$",
-                      "^net\\.kovidgoyal\\.kitty$"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "left_control"
-                },
-                "to": [
-                  {
-                    "key_code": "left_command"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Launch Ghostty on right_control",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.mitchellh\\.ghostty"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "right_control"
-                },
-                "to": [
-                  {
-                    "shell_command": "open /Applications/Ghostty.app"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.mitchellh\\.ghostty"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "right_control"
-                },
-                "to": [
-                  {
-                    "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"ghostty\" to false' -e 'end tell' "
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Launch Ghostty on right_option",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.mitchellh\\.ghostty"
-                    ],
-                    "type": "frontmost_application_unless"
-                  }
-                ],
-                "from": {
-                  "key_code": "right_option"
-                },
-                "to": [
-                  {
-                    "shell_command": "open /Applications/Ghostty.app"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^com\\.mitchellh\\.ghostty"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "right_option"
-                },
-                "to": [
-                  {
-                    "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"ghostty\" to false' -e 'end tell' "
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Hyper Key (⌃⌥⇧⌘)",
-            "manipulators": [
-              {
-                "description": "right_command -> Hyper Key",
-                "from": {
-                  "key_code": "right_command"
-                },
-                "to": [
-                  {
-                    "key_code": "left_shift",
-                    "modifiers": [
-                      "left_command",
-                      "left_control",
-                      "left_option"
-                    ]
-                  }
-                ],
-                "to_if_alone": [
-                  {
-                    "key_code": "6",
-                    "modifiers": [
-                      "left_command",
-                      "left_control",
-                      "left_option",
-                      "left_shift"
-                    ]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Hyper Key sublayer \"a\"",
-            "manipulators": [
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_t",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_e",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_r",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_s",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_u",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_c",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_d",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_v",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_left_command",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_h",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_j",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_k",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_l",
-                    "type": "variable_if",
-                    "value": 0
-                  },
-                  {
-                    "name": "hyper_sublayer_f",
-                    "type": "variable_if",
-                    "value": 0
-                  }
-                ],
-                "description": "Toggle Hyper sublayer a",
-                "from": {
-                  "key_code": "a",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_command",
-                      "left_control",
-                      "left_shift",
-                      "left_option"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "set_variable": {
-                      "name": "hyper_sublayer_a",
-                      "value": 1
+    "global": { "show_in_menu_bar": false },
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Swap control/command in Terminal",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^org\\.qutebrowser\\.qutebrowser$",
+                                            "^com\\.mitchellh\\.ghostty",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^net\\.kovidgoyal\\.kitty$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": { "key_code": "left_command" },
+                                "to": [{ "key_code": "left_control" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^io\\.alacritty$",
+                                            "^org\\.alacritty$",
+                                            "^org\\.qutebrowser\\.qutebrowser$",
+                                            "^com\\.mitchellh\\.ghostty",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^net\\.kovidgoyal\\.kitty$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": { "key_code": "left_control" },
+                                "to": [{ "key_code": "left_command" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Launch Ghostty on right_control",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": { "key_code": "right_control" },
+                                "to": [{ "shell_command": "open /Applications/Ghostty.app" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": { "key_code": "right_control" },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"ghostty\" to false' -e 'end tell' " }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Launch Ghostty on right_option",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": { "key_code": "right_option" },
+                                "to": [{ "shell_command": "open /Applications/Ghostty.app" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.mitchellh\\.ghostty"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": { "key_code": "right_option" },
+                                "to": [{ "shell_command": "osascript -e 'tell application \"Finder\"' -e 'set visible of process \"ghostty\" to false' -e 'end tell' " }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper Key (⌃⌥⇧⌘)",
+                        "manipulators": [
+                            {
+                                "description": "right_command -> Hyper Key",
+                                "from": { "key_code": "right_command" },
+                                "to": [
+                                    {
+                                        "key_code": "left_shift",
+                                        "modifiers": ["left_command", "left_control", "left_option"]
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "6",
+                                        "modifiers": ["left_command", "left_control", "left_option", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Hyper Key sublayer \"a\"",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_t",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_e",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_r",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_s",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_u",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_c",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_d",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_v",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_left_command",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_h",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_j",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_k",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_l",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    },
+                                    {
+                                        "name": "hyper_sublayer_f",
+                                        "type": "variable_if",
+                                        "value": 0
+                                    }
+                                ],
+                                "description": "Toggle Hyper sublayer a",
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "hyper_sublayer_a",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "hyper_sublayer_a",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'WhatsApp.app'",
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'WhatsApp.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Slack.app'",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Slack.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Discord.app'",
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Discord.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Google Chrome.app'",
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Google Chrome.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'System Settings.app'",
+                                "from": {
+                                    "key_code": "comma",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'System Settings.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Todoist.app'",
+                                "from": {
+                                    "key_code": "t",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Todoist.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'DBeaver.app'",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'DBeaver.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Finder.app'",
+                                "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Finder.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Postman.app'",
+                                "from": {
+                                    "key_code": "p",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Postman.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Simplenote.app'",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Simplenote.app'" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_a",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Open -a 'Preview.app'",
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": { "mandatory": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -a 'Preview.app'" }],
+                                "type": "basic"
+                            }
+                        ]
                     }
-                  }
-                ],
-                "to_after_key_up": [
-                  {
-                    "set_variable": {
-                      "name": "hyper_sublayer_a",
-                      "value": 0
-                    }
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'WhatsApp.app'",
-                "from": {
-                  "key_code": "w",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 591,
+                        "vendor_id": 1452
+                    },
+                    "treat_as_built_in_keyboard": true
+                }
+            ],
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f3" },
+                    "to": [{ "key_code": "mission_control" }]
                 },
-                "to": [
-                  {
-                    "shell_command": "open -a 'WhatsApp.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Slack.app'",
-                "from": {
-                  "key_code": "s",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
+                {
+                    "from": { "key_code": "f4" },
+                    "to": [{ "key_code": "launchpad" }]
                 },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Slack.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Discord.app'",
-                "from": {
-                  "key_code": "e",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
+                {
+                    "from": { "key_code": "f5" },
+                    "to": [{ "key_code": "illumination_decrement" }]
                 },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Discord.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Google Chrome.app'",
-                "from": {
-                  "key_code": "c",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
+                {
+                    "from": { "key_code": "f6" },
+                    "to": [{ "key_code": "illumination_increment" }]
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [
+                        {
+                            "key_code": "grave_accent_and_tilde",
+                            "modifiers": ["left_command"]
+                        }
                     ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Google Chrome.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'System Settings.app'",
-                "from": {
-                  "key_code": "comma",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'System Settings.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Todoist.app'",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Todoist.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'DBeaver.app'",
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'DBeaver.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Finder.app'",
-                "from": {
-                  "key_code": "f",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Finder.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Postman.app'",
-                "from": {
-                  "key_code": "p",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Postman.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Simplenote.app'",
-                "from": {
-                  "key_code": "l",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Simplenote.app'"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "name": "hyper_sublayer_a",
-                    "type": "variable_if",
-                    "value": 1
-                  }
-                ],
-                "description": "Open -a 'Preview.app'",
-                "from": {
-                  "key_code": "o",
-                  "modifiers": {
-                    "mandatory": [
-                      "any"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "open -a 'Preview.app'"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          }
-        ]
-      },
-      "devices": [
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 591,
-            "vendor_id": 1452
-          },
-          "treat_as_built_in_keyboard": true
+                }
+            ],
+            "virtual_hid_keyboard": {
+                "country_code": 0,
+                "keyboard_type_v2": "ansi"
+            }
         }
-      ],
-      "fn_function_keys": [
-        {
-          "from": {
-            "key_code": "f3"
-          },
-          "to": [
-            {
-              "key_code": "mission_control"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f4"
-          },
-          "to": [
-            {
-              "key_code": "launchpad"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f5"
-          },
-          "to": [
-            {
-              "key_code": "illumination_decrement"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f6"
-          },
-          "to": [
-            {
-              "key_code": "illumination_increment"
-            }
-          ]
-        }
-      ],
-      "name": "Default profile",
-      "selected": true,
-      "simple_modifications": [
-        {
-          "from": {
-            "key_code": "caps_lock"
-          },
-          "to": [
-            {
-              "key_code": "grave_accent_and_tilde",
-              "modifiers": [
-                "left_command"
-              ]
-            }
-          ]
-        }
-      ],
-      "virtual_hid_keyboard": {
-        "country_code": 0,
-        "keyboard_type_v2": "ansi"
-      }
-    }
-  ]
+    ]
 }
