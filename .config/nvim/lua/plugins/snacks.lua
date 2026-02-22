@@ -4,34 +4,6 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    -- styles = {
-    --   -- ESTA SEÇÃO TRAVA O TAMANHO E A POSIÇÃO DO POPUP
-    --   snacks_image = {
-    --     width = 10,          -- Largura da janela
-    --     height = 5,          -- Altura da janela
-    --     -- O 'size' força a imagem interna a NÃO crescer com o terminal
-    --     size = { width = 10, height = 7 }, 
-    --     relative = "cursor",
-    --     row = 1,
-    --     col = 1,
-    --     focusable = false,
-    --     style = "minimal",
-    --     border = "rounded",
-    --     noautocmd = true,    -- Bloqueia redimensionamento reativo do Tmux
-    --   },
-    -- },
-    -- image = {
-    --   enabled = true,
-    --   backend = "kitty",
-    --   -- LIMITES RÍGIDOS (Devem ser iguais ao style acima)
-    --   max_width = 15,
-    --   max_height = 7,
-    --   markdown = {
-    --     enabled = true,
-    --     only_render_at_cursor = true,
-    --   },
-    -- },
-    -- -- Suas outras funcionalidades
     snacksbigfile = { enabled = true },
     dashboard = { enabled = false },
     explorer = { enabled = false },
@@ -41,32 +13,37 @@ return {
       enabled = true,
       timeout = 3000,
     },
-    picker = { enabled = true },
+    picker = { 
+      enabled = true,
+      -- ADICIONE ESTE BLOCO PARA FILTRAR O MRU
+      sources = {
+        recent = {
+          filter = {
+            cwd = true, -- Mantém a filtragem por diretório se desejar
+            exclude = { "png", "jpg", "jpeg", "gif", "webp", "svg", "bmp", "ico" }
+          }
+        }
+      }
+    },
     quickfile = { enabled = true },
     scope = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
   },
   keys = {
-    -- Top Pickers
+    -- ... (seus keymaps permanecem exatamente os mesmos)
     { "<leader><cr>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>ps", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-    
-    -- Find
     { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>pv", function() Snacks.picker.files({ cwd = vim.fn.expand("~/.config") }) end, desc = "Find Config File" },
+    { "<leader>pv", function() Snacks.picker.files({ cwd = vim.fn.expand("~/dot") }) end, desc = "Find Config File" },
     { "<leader>pf", function() Snacks.picker.files() end, desc = "Find Files" },
     { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     { "<leader>mr", function() Snacks.picker.recent() end, desc = "Recent" },
-    
-    -- Git
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-    
-    -- Search
     { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
     { "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
@@ -91,15 +68,11 @@ return {
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
     { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
     { "<leader>pc", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
-    
-    -- LSP
     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
     { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
     { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
     { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-    
-    -- UI Pickers
     { "<leader>z", function() Snacks.zen() end, desc = "Toggle Zen Mode" },
     { "<leader>Z", function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
     { "<leader>.", function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },

@@ -1,3 +1,5 @@
+vim.g.lspconfig_silent_deprecation = true
+
 require("options")
 require("autocmd")
 require("mappings")
