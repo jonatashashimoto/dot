@@ -19,7 +19,7 @@ return {
       sources = {
         recent = {
           filter = {
-            cwd = true, -- Mantém a filtragem por diretório se desejar
+            -- cwd = true, -- Mantém a filtragem por diretório se desejar
             exclude = { "png", "jpg", "jpeg", "gif", "webp", "svg", "bmp", "ico" }
           }
         }
@@ -38,7 +38,13 @@ return {
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
     { "<leader>b", function() Snacks.picker.buffers() end, desc = "Buffers" },
-    { "<leader>pv", function() Snacks.picker.files({ cwd = vim.fn.expand("~/dot") }) end, desc = "Find Config File" },
+
+    { "<leader>pv", function() Snacks.picker.files({ 
+      cwd = vim.fn.expand("~/dot"), 
+      hidden = true,  
+      exclude = { "*.ttf", "*.otf", "*.woff", "*.woff2", "*.eot" }
+    }) end, desc = "Find Config File" },
+
     { "<leader>pf", function() Snacks.picker.files() end, desc = "Find Files" },
     { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
