@@ -47,7 +47,7 @@ local function createTap()
         -- 1. HYPER + A (Trigger Sublayer)
         if keyCode == 0 then
             _G.sublayerActive = true
-            hs.alert.show("SUBLAYER ACTIVE", 0.5)
+            -- hs.alert.show("SUBLAYER ACTIVE", 0.5)
             return true
         end
 
