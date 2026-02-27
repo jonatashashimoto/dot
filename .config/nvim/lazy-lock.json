@@ -13,6 +13,7 @@
   "catppuccin": { "branch": "main", "commit": "0a5de4da015a175f416d6ef1eda84661623e0500" },
   "clever-f.vim": { "branch": "master", "commit": "6a3ac5e3688598af9411ab741737f98c47370c22" },
   "cloak.nvim": { "branch": "main", "commit": "648aca6d33ec011dc3166e7af3b38820d01a71e4" },
+  "codediff.nvim": { "branch": "main", "commit": "783258e587bd1bc2bba4d617d648e7424d594107" },
   "conform.nvim": { "branch": "master", "commit": "c2526f1cde528a66e086ab1668e996d162c75f4f" },
   "debugprint.nvim": { "branch": "main", "commit": "4f29196c5fe32752bb7a3e8bc83d4a4d2f3b7922" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },

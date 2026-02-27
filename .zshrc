@@ -99,7 +99,11 @@ alias mux='sesh connect $(sesh list | fzf)'
 # alias sharemux="gotty tmux new-session -A -s jojolitos"
 # brew install yudai/gotty/gotty
 
-alias share="tty-share --public" # brew install tty-share
+# alias share="ttyd -p 8080 tmux attach-session -t $(tmux display-message -p  '#S') && ngrok http 8080" # brew install tty-share
+
+alias share="tmux set-option remain-on-exit on && \
+             tmux split-window -h 'cloudflared tunnel --url http://localhost:8080; exec $SHELL' && \
+             ttyd -p 8080 -t fontSize=18 -t 'fontFamily=JetBrainsMono Nerd Font Mono' -t 'theme={\"background\": \"#000000\"}' tmux attach-session -t  \$(tmux display-message -p '#S')"
 
 # Easier navigation: .., ..., ~ and -
 alias ..="cd .."

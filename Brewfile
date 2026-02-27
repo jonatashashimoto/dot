@@ -27,6 +27,9 @@ brew "prettierd"
 brew "urlview"
 brew "imagemagick"
 brew "pngpaste"
+# for tunneling
+brew "ttyd"
+brew "cloudflared"
 
 cask "google-chrome"
 cask "ghostty"

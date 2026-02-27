@@ -5,23 +5,42 @@ local terminalIDs = { ["com.mitchellh.ghostty"] = true, ["com.apple.Terminal"] =
 
 -- APP SHORTCUTS (Hyper + A + Key)
 local sublayerApps = {
-  s = "Slack", f = "Finder", w = "WhatsApp",
-  c = "Google Chrome", d = "Discord", l = "Simplenote",
-  p = "Postman", t = "Todoist"
+  s = "Slack",
+  f = "Finder",
+  w = "WhatsApp",
+  c = "Google Chrome",
+  d = "DBeaver",
+  l = "Simplenote",
+  p = "Postman",
+  t = "Todoist",
 }
 
 -- YABAI DIRECT SHORTCUTS (Hyper + Key)
 local yabaiHyper = {
-  -- Added /opt/homebrew/bin/ to the path to ensure it finds yabai and jq
-  l = [[/opt/homebrew/bin/yabai -m space --layout "$(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r '.type' | grep -q 'stack' && echo 'bsp' || echo 'stack')"]]
+  l =
+  [[/opt/homebrew/bin/yabai -m space --layout "$(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r '.type' | grep -q 'stack' && echo 'bsp' || echo 'stack')"]],
 }
 
--- Internal helpers
+-- Internal helpers to convert letters to KeyCodes
 local appKeyCodes = {}
-for key, name in pairs(sublayerApps) do appKeyCodes[hs.keycodes.map[key]] = name end
+for key, name in pairs(sublayerApps) do
+  appKeyCodes[hs.keycodes.map[key]] = name
+end
 
 local yabaiKeyCodes = {}
-for key, cmd in pairs(yabaiHyper) do yabaiKeyCodes[hs.keycodes.map[key]] = cmd end
+for key, cmd in pairs(yabaiHyper) do
+  yabaiKeyCodes[hs.keycodes.map[key]] = cmd
+end
+
+-- Useful Keycode Reference
+local K = {
+  a = 0,
+  r = 15,
+  rightCmd = 54,
+  rightCtrl = 62,
+  leftCmd = 55,
+  leftCtrl = 59
+}
 
 -- ==========================================
 -- 2. THE MASTER BRAIN
@@ -33,56 +52,71 @@ local function createTap()
     local type = event:getType()
     local isKeyDown = (type == hs.eventtap.event.types.keyDown)
 
-    -- A. TRACK RIGHT CMD (54) -> HYPER
-    if keyCode == 54 then
+    -- A. TRACK RIGHT CMD (Hyper Key)
+    if keyCode == K.rightCmd then
       _G.rightCmdDown = flags.cmd
-      if _G.rightCmdDown then
-        event:setFlags({ cmd = true, ctrl = true, alt = true, shift = true })
-      end
+      -- Reset sublayer if Hyper is released
+      if not _G.rightCmdDown then _G.sublayerActive = false end
       return false
     end
 
-    -- B. HYPER COMMANDS
+    -- B. LOGIC FOR HYPER HELD DOWN
     if _G.rightCmdDown and isKeyDown then
-        -- 1. HYPER + A (Trigger Sublayer)
-        if keyCode == 0 then
-            _G.sublayerActive = true
-            -- hs.alert.show("SUBLAYER ACTIVE", 0.5)
-            return true
+      -- 1. PRIORITY: SUBLAYER APP LAUNCHING
+      -- This fixes your bug: checking sublayer BEFORE direct yabai commands
+      if _G.sublayerActive then
+        local targetApp = appKeyCodes[keyCode]
+        if targetApp then
+          hs.application.launchOrFocus(targetApp)
+          _G.sublayerActive = false
+          return true -- Consume event
         end
-
-        -- 2. HYPER + L (Layout Toggle)
-        -- Hardcoded check for KeyCode 37 (standard 'l') as a fallback
-        if keyCode == hs.keycodes.map["l"] or keyCode == 37 then
-            print("Hyper+L Triggered") -- Check Hammerspoon Console to see this
-            hs.execute(yabaiHyper.l)
-            return true
-        end
-    end
-
-    -- C. SUBLAYER APP LAUNCHING
-    if _G.sublayerActive and isKeyDown then
-      local targetApp = appKeyCodes[keyCode]
-      if targetApp then
-        hs.application.launchOrFocus(targetApp)
+        -- If key pressed wasn't an app, cancel sublayer and continue
         _G.sublayerActive = false
+      end
+
+      -- 2. TRIGGER SUBLAYER (Hyper + A)
+      if keyCode == K.a then
+        _G.sublayerActive = true
+        -- hs.alert.show("SUBLAYER ACTIVE", 0.5)
         return true
       end
-      _G.sublayerActive = false
+
+      -- 3. RELOAD CONFIG (Hyper + R)
+      if keyCode == K.r then
+        hs.alert.show("Reloading Config...")
+        hs.reload()
+        return true
+      end
+
+      -- 4. YABAI COMMANDS
+      local yabaiCmd = yabaiKeyCodes[keyCode]
+      if yabaiCmd then
+        hs.execute(yabaiCmd)
+        return true
+      end
     end
 
-    -- D. GHOSTTY TOGGLE (Right Ctrl 62)
-    if keyCode == 62 and flags.ctrl then
+    -- C. GHOSTTY TOGGLE (Right Ctrl 62)
+    if keyCode == K.rightCtrl and flags.ctrl then
       local gApp = hs.application.get("com.mitchellh.ghostty")
-      if gApp and gApp:isFrontmost() then gApp:hide() else hs.application.launchOrFocus("Ghostty") end
+      if gApp and gApp:isFrontmost() then
+        gApp:hide()
+      else
+        hs.application.launchOrFocus("Ghostty")
+      end
       return true
     end
 
-    -- E. TERMINAL SWAP
+    -- D. TERMINAL SWAP
     local app = hs.application.frontmostApplication()
     if app and terminalIDs[app:bundleID()] and not _G.rightCmdDown then
-      if keyCode == 55 then event:setFlags({ ctrl = true }) return false
-      elseif keyCode == 59 then event:setFlags({ cmd = true }) return false
+      if keyCode == K.leftCmd then
+        event:setFlags({ ctrl = true })
+        return false
+      elseif keyCode == K.leftCtrl then
+        event:setFlags({ cmd = true })
+        return false
       elseif isKeyDown then
         if flags.cmd then event:setFlags({ ctrl = true }) end
         if flags.ctrl then event:setFlags({ cmd = true }) end
@@ -93,7 +127,21 @@ local function createTap()
   end)
 end
 
-masterTap = createTap():start()
-hs.timer.doEvery(30, function() if not masterTap:isEnabled() then masterTap:stop(); masterTap = createTap():start() end end)
-hs.hotkey.bind({}, "capslock", function() hs.eventtap.keyStroke({ "cmd" }, "`") end)
-hs.alert.show("SYSTEMS READY 🚀")
+-- ==========================================
+-- 3. HOUSEKEEPING
+-- ==========================================
+masterTap = createTap()
+masterTap:start()
+
+-- Watchdog to ensure the tap stays alive
+hs.timer.doEvery(30, function()
+  if not masterTap:isEnabled() then
+    masterTap:stop()
+    masterTap = createTap()
+    masterTap:start()
+  end
+end)
+
+
+-- Visual confirmation that the script reached the end
+hs.alert.show("Hammerspoon Reloaded 🔄", 1.5)
