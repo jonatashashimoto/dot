@@ -17,8 +17,7 @@ local sublayerApps = {
 
 -- YABAI DIRECT SHORTCUTS (Hyper + Key)
 local yabaiHyper = {
-  l =
-  [[/opt/homebrew/bin/yabai -m space --layout "$(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r '.type' | grep -q 'stack' && echo 'bsp' || echo 'stack')"]],
+  l = [[/opt/homebrew/bin/yabai -m space --layout "$(/opt/homebrew/bin/yabai -m query --spaces --space | /opt/homebrew/bin/jq -r '.type' | grep -q 'stack' && echo 'bsp' || echo 'stack')"]],
 }
 
 -- Internal helpers to convert letters to KeyCodes
@@ -39,7 +38,7 @@ local K = {
   rightCmd = 54,
   rightCtrl = 62,
   leftCmd = 55,
-  leftCtrl = 59
+  leftCtrl = 59,
 }
 
 -- ==========================================
@@ -56,7 +55,9 @@ local function createTap()
     if keyCode == K.rightCmd then
       _G.rightCmdDown = flags.cmd
       -- Reset sublayer if Hyper is released
-      if not _G.rightCmdDown then _G.sublayerActive = false end
+      if not _G.rightCmdDown then
+        _G.sublayerActive = false
+      end
       return false
     end
 
@@ -88,8 +89,32 @@ local function createTap()
         hs.reload()
         return true
       end
+      -- https://google.com
 
-      -- 4. YABAI COMMANDS
+      -- 3.5. ALTERNAR JANELAS DO MESMO APP (Hyper + Tab)
+      -- Keycode 48 é o TAB
+      if keyCode == 48 then
+        local app = hs.application.frontmostApplication()
+        if app then
+          -- Pega todas as janelas do app no Space atual
+          local windows = app:allWindows()
+          -- Filtra apenas janelas reais (com título) para evitar "janelas fantasmas" de status
+          local realWindows = {}
+          for _, w in ipairs(windows) do
+            if w:title() ~= "" and w:subrole() ~= "AXUnknown" then
+              table.insert(realWindows, w)
+            end
+          end
+
+          if #realWindows > 1 then
+            -- Foca na última janela da lista (geralmente a próxima na ordem de foco)
+            realWindows[#realWindows]:focus()
+          end
+        end
+        return true -- Consome o evento para não disparar o Tab nativo
+      end
+
+      -- 5. YABAI COMMANDS
       local yabaiCmd = yabaiKeyCodes[keyCode]
       if yabaiCmd then
         hs.execute(yabaiCmd)
@@ -118,8 +143,12 @@ local function createTap()
         event:setFlags({ cmd = true })
         return false
       elseif isKeyDown then
-        if flags.cmd then event:setFlags({ ctrl = true }) end
-        if flags.ctrl then event:setFlags({ cmd = true }) end
+        if flags.cmd then
+          event:setFlags({ ctrl = true })
+        end
+        if flags.ctrl then
+          event:setFlags({ cmd = true })
+        end
       end
     end
 
@@ -141,7 +170,6 @@ hs.timer.doEvery(30, function()
     masterTap:start()
   end
 end)
-
 
 -- Visual confirmation that the script reached the end
 hs.alert.show("Hammerspoon Reloaded 🔄", 1.5)

@@ -2,6 +2,7 @@ return {
   "kndndrj/nvim-dbee",
   dependencies = {
     "MunifTanjim/nui.nvim",
+    "nvim-lua/plenary.nvim", -- dbee também costuma precisar deste
   },
   build = function()
     -- Install tries to automatically detect the install method.
