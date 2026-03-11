@@ -1,4 +1,6 @@
 vim.g.lspconfig_silent_deprecation = true
+vim.g.terminal_query_colors = false
+vim.o.termguicolors = true
 
 require("options")
 require("autocmd")

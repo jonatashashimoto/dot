@@ -1,0 +1,16 @@
+return {}
+-- return {
+-- 	"OXY2DEV/markview.nvim",
+-- 	lazy = false, -- Recommended for smooth experience
+-- 	dependencies = {
+-- 		"nvim-treesitter/nvim-treesitter",
+-- 		"nvim-tree/nvim-web-devicons",
+-- 	},
+-- 	config = function()
+-- 		require("markview").setup({
+-- 			preview = {
+-- 				render_mermaid = true, -- Native Mermaid support
+-- 			},
+-- 		})
+-- 	end,
+-- }

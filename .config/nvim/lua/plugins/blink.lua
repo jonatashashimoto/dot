@@ -36,7 +36,7 @@ return {
     keymap = {
       preset = 'super-tab',
       ['<c-k>'] = { 'select_prev', 'fallback' },
-      ['<c-j>'] = { 'select_next', 'fallback' },
+      ['<c-j>'] = { 'show', 'select_next', 'fallback' },
     },
 
     appearance = {
