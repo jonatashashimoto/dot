@@ -16,26 +16,18 @@ return {
 		picker = {
 			enabled = true,
 			ui_select = true,
-			-- This is the global fix for Ghostty "pasting" its version
-			-- It stops the picker from asking the terminal for info while loading
-			terminal = {
-				enabled = false,
-			},
-			preview = {
-				-- 200ms delay is the "magic number" for Ghostty on macOS
-				-- It prevents the race condition when hovering for the first time
-				delay = 200,
-				max_size = 51200, -- 50KB limit
-			},
-			-- THIS IS CRITICAL: Disable Treesitter in the previewer.
-			-- This stops render-markdown and Treesitter from lagging the UI.
-			image = false,
-			treesitter = false,
+			-- Stop the terminal query globally
+			terminal = { enabled = false },
 			sources = {
-				recent = {
-					preview = "file", -- Explicitly use "file" string, not a table
-					filter = {
-						exclude = { "png", "jpg", "jpeg", "gif", "webp", "svg", "bmp", "ico" },
+				files = { preview = "file" },
+				recent = { preview = "file" },
+			},
+			win = {
+				preview = {
+					wo = {
+						conceallevel = 0, -- Força a mostrar o código puro (#, ```, etc)
+						concealcursor = "", -- Não esconde nada mesmo com o cursor em cima
+						spell = false,
 					},
 				},
 			},
