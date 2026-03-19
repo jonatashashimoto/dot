@@ -17,7 +17,7 @@ yabai -m config \
     insert_feedback_color 0xffd75f5f \
     split_type auto \
     auto_balance on \
-    top_padding 68 \
+    top_padding 60 \
     bottom_padding 16 \
     left_padding 16 \
     right_padding 16 \
