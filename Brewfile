@@ -28,6 +28,9 @@ brew "prettierd"
 brew "urlview"
 brew "imagemagick"
 brew "pngpaste"
+brew "ansifilter"
+# brew "fpp" #for opening files in tmux fpp (USELESS)
+
 # for tunneling
 brew "ttyd"
 brew "cloudflared"
@@ -37,4 +40,3 @@ cask "ghostty"
 cask "zen"
 cask "ghostty"
 cask "hammerspoon"
-brew "flashspace"
