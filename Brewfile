@@ -29,6 +29,7 @@ brew "urlview"
 brew "imagemagick"
 brew "pngpaste"
 brew "ansifilter"
+brew "lazygit"
 # brew "fpp" #for opening files in tmux fpp (USELESS)
 
 # for tunneling

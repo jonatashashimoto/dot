@@ -108,4 +108,12 @@ return {
       -- vim.cmd([[hi Folded guibg=#333333 ]])
     end
   },
+  {
+    "dgrco/hearthlight.nvim",
+    priority = 1000,
+    config = function()
+      require("hearthlight").setup() -- See Default Configuration
+      vim.cmd("colorscheme hearthlight")
+    end,
+  }
 }
