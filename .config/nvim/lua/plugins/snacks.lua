@@ -21,6 +21,10 @@ return {
 			sources = {
 				files = { preview = "file" },
 				recent = { preview = "file" },
+				grep = {
+					ignored = true, -- Set to true to show ignored files by default
+					hidden = true, -- Set to true to show hidden files by default
+				},
 			},
 			win = {
 				preview = {
@@ -63,13 +67,13 @@ return {
 			end,
 			desc = "Command History",
 		},
-		{
-			"<leader>n",
-			function()
-				Snacks.picker.notifications()
-			end,
-			desc = "Notification History",
-		},
+		-- {
+		-- 	"<leader>n",
+		-- 	function()
+		-- 		Snacks.picker.notifications()
+		-- 	end,
+		-- 	desc = "Notification History",
+		-- },
 		{
 			"<leader>b",
 			function()

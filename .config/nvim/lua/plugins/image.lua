@@ -1,45 +1,43 @@
 return {
+	"3rd/image.nvim",
+	build = false,
+	opts = {
+		backend = "kitty",
+		processor = "magick_cli",
+		max_width = 10,
+		max_height = 10,
+		scale_factor = 1.0,
+		window_overlap_clear_enabled = false,
+		editor_only_render_when_focused = true, -- CRITICAL: Don't render if nvim isn't focused
+
+		-- FIX: Stop the plugin from attaching to the Snacks Picker windows
+		exclude_setup_in_buftype = { "nofile", "terminal", "prompt" },
+
+		integrations = {
+			markdown = {
+				enabled = true,
+				download_remote_images = true,
+				only_render_image_at_cursor = true,
+				only_render_image_at_cursor_mode = "popup",
+				floating_windows = false, -- Disable for floating windows to stop picker lag
+				max_width = 10,
+				max_height = 10,
+				-- Specifically ignore the filetypes used by Snacks
+				filetypes = { "markdown", "vimwiki" },
+			},
+		},
+	},
+	config = function()
+		require("image").setup({
+			editor_only_render_when_focused = true,
+			exclude_setup_in_ft = { "snacks_picker_input", "snacks_picker_list", "snacks_preview" },
+			integrations = {
+				markdown = {
+					enabled = true,
+					clear_in_insert_mode = true, -- Stops rendering while you type
+					download_remote_images = false, -- Huge speed boost
+				},
+			},
+		})
+	end,
 }
--- return {
--- 	"3rd/image.nvim",
--- 	build = false,
--- 	opts = {
--- 		backend = "kitty",
--- 		processor = "magick_cli",
--- 		max_width = 10,
--- 		max_height = 10,
--- 		scale_factor = 1.0,
--- 		window_overlap_clear_enabled = false,
--- 		editor_only_render_when_focused = true, -- CRITICAL: Don't render if nvim isn't focused
-
--- 		-- FIX: Stop the plugin from attaching to the Snacks Picker windows
--- 		exclude_setup_in_buftype = { "nofile", "terminal", "prompt" },
-
--- 		integrations = {
--- 			markdown = {
--- 				enabled = true,
--- 				download_remote_images = true,
--- 				only_render_image_at_cursor = true,
--- 				only_render_image_at_cursor_mode = "popup",
--- 				floating_windows = false, -- Disable for floating windows to stop picker lag
--- 				max_width = 10,
--- 				max_height = 10,
--- 				-- Specifically ignore the filetypes used by Snacks
--- 				filetypes = { "markdown", "vimwiki" },
--- 			},
--- 		},
--- 	},
--- 	config = function()
--- 		require("image").setup({
--- 			editor_only_render_when_focused = true,
--- 			exclude_setup_in_ft = { "snacks_picker_input", "snacks_picker_list", "snacks_preview" },
--- 			integrations = {
--- 				markdown = {
--- 					enabled = true,
--- 					clear_in_insert_mode = true, -- Stops rendering while you type
--- 					download_remote_images = false, -- Huge speed boost
--- 				},
--- 			},
--- 		})
--- 	end,
--- }

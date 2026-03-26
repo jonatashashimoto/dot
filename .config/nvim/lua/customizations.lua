@@ -83,4 +83,4 @@ local showCommandBar = function(opts)
 
 end
 
-vim.keymap.set("n", "<leader>k", showCommandBar)
+-- vim.keymap.set("n", "<leader>k", showCommandBar)

@@ -25,7 +25,7 @@ return {
     -- nnoremap <leader>gw :Gwrite
     bind('n', '<leader>gw', ':Gwrite', { noremap = true })
     -- nnoremap <leader>gp :Dispatch Git push origin HEAD
-    bind('n', '<leader>gp', ':Dispatch! git push origin HEAD', { noremap = true })
+    bind('n', '<leader>gp', ':Git push origin HEAD', { noremap = true })
     -- nnoremap <leader>gl :Gpull
     bind('n', '<leader>gl', ':Git pull origin HEAD', { noremap = true })
   end

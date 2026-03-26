@@ -1,3 +1,4 @@
+-- return {}
 return {
   'bennypowers/splitjoin.nvim',
   config = function()

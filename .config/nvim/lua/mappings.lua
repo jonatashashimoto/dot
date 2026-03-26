@@ -108,10 +108,6 @@ bind('x', "<leader>p", "\"_dP", {})
 bind('n', "<leader>fd", ":let @+ = expand('%:p:h')", {})
 
 
-vim.api.nvim_set_keymap("n", "<leader>nn", ":e ~/notes/README.md<CR>", {})
-vim.api.nvim_set_keymap("n", "<leader>rr", ":e ~/http.rest<CR>", {})
-
-
 --" URL encode/decode selection
 vim.cmd [[
   vnoremap <leader>en :!python3 -c 'import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))'<cr>
