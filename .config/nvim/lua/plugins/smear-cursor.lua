@@ -26,7 +26,7 @@ return {
     -- distance_stop_animating = 0.5,        -- 0.1      > 0
     -- cterm_cursor_colors = { 240, 245, 250, 255 },
     -- cterm_bg = 235,
-    cursor_color = "#ff8800",
+    cursor_color = "#80FAFF",
     stiffness = 0.8,
     trailing_stiffness = 0.6,
      damping = 0.9,

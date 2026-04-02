@@ -11,13 +11,15 @@ font-size = 24
 background-opacity = 0.85
 background-blur-radius = 10
 window-decoration = false
-cursor-color = #b42455
+cursor-color = #80FAFF
 macos-titlebar-style = hidden
 window-padding-balance = true
 
 ###########################
 # SHADERS
 ###########################
+
+custom-shader = shaders/cursor_freeze.glsl
 
 # custom-shader = shaders/glitch-jojo.glsl
 # custom-shader = shaders/bettercrt.glsl

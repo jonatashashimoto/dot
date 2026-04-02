@@ -11,3 +11,4 @@
 .local/share
 .local/state
 node_modules
+.aider*

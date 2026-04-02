@@ -23,7 +23,7 @@ return {
 				recent = { preview = "file" },
 				grep = {
 					ignored = true, -- Set to true to show ignored files by default
-					hidden = true, -- Set to true to show hidden files by default
+					hidden = false, -- Set to true to show hidden files by default
 				},
 			},
 			win = {

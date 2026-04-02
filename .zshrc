@@ -288,3 +288,6 @@ if [ -f '/Users/jonatas.hashimoto/Downloads/google-cloud-sdk/path.zsh.inc' ]; th
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
 . "$HOME/.turso/env"
+
+
+export GEMINI_API_KEY="AIzaSyCoKlmM11BME0_rg1QRgT2wteDZCUk-pnk"
