@@ -1,23 +1,3 @@
-vim.g.lspconfig_silent_deprecation = true
-vim.g.terminal_query_colors = false
-vim.o.termguicolors = true
-
-vim.env.TERM_PROGRAM = "ghostty"
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function(event)
-		-- Verifica se o buffer atual é uma janela de preview do Snacks
-		local win = vim.fn.bufwinid(event.buf)
-		if win > -1 and vim.w[win].snacks_main then
-			-- Desativa o render-markdown especificamente para este buffer
-			require("render-markdown").disable()
-			-- Garante que o Neovim não esconda os símbolos (#, *, etc)
-			vim.wo[win].conceallevel = 0
-		end
-	end,
-})
-
 require("options")
 require("autocmd")
 require("mappings")
@@ -25,3 +5,30 @@ require("plugins")
 require("optimizations")
 require("macros")
 require("customizations")
+
+vim.cmd([[
+
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('b')<CR>
+
+function! VisualSelection(direction) range
+  let l:saved_reg = @"
+  execute "normal! vgvy"
+
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
+
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunction
+]])

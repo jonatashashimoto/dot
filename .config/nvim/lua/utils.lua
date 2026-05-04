@@ -10,6 +10,7 @@ function M.length(table)
   return count
 end
 
+
 function M.UnloadAllModules()
   -- Lua patterns for the modules to unload
   local unload_modules = {
@@ -40,7 +41,7 @@ function M.Reload()
   M.UnloadAllModules()
 
   -- Source init.lua
-  cmd('luafile $MYVIMRC')
+  -- cmd('luafile $MYVIMRC')
 end
 
 -- Restart Vim without having to close and run again

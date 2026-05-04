@@ -1,7 +1,6 @@
 return {
   'David-Kunz/gen.nvim',
   config = function()
-    require('gen').setup({
-    })
+    require('gen').setup({ })
   end
 }

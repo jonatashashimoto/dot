@@ -28,6 +28,7 @@ o.mouse = 'nv'
 vim.opt.undofile = true
 wo.number = true
 o.termguicolors = true
+vim.o.termguicolors = true
 bo.synmaxcol = 80
 wo.cursorcolumn = false
 wo.cursorline = false

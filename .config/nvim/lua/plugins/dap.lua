@@ -107,5 +107,5 @@ return {
       dap.listeners.before.event_terminated["dapui_config"] = dapui.close
       dap.listeners.before.event_exited["dapui_config"] = dapui.close
     end
-  },
+  }
 }

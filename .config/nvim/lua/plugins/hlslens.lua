@@ -1,4 +1,3 @@
--- return {}
 return {
   'kevinhwang91/nvim-hlslens',
   config = function()

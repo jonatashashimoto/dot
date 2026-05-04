@@ -1,5 +1,6 @@
 return {
 	"3rd/image.nvim",
+	-- "3_3_ca/image.nvim", -- or "3_3_ca/image.nvim" depending on your 
 	build = false,
 	opts = {
 		backend = "kitty",
@@ -9,9 +10,14 @@ return {
 		scale_factor = 1.0,
 		window_overlap_clear_enabled = false,
 		editor_only_render_when_focused = true, -- CRITICAL: Don't render if nvim isn't focused
+		exclude_buffer_ft = { "snacks_picker_preview", "telescope_preview" },
+		-- markdown_extensions = {
+		-- 	"latex", -- Try disabling this first
+		-- 	-- "html-img",
+		-- },
 
 		-- FIX: Stop the plugin from attaching to the Snacks Picker windows
-		exclude_setup_in_buftype = { "nofile", "terminal", "prompt" },
+		-- exclude_setup_in_buftype = { "nofile", "terminal", "prompt" },
 
 		integrations = {
 			markdown = {

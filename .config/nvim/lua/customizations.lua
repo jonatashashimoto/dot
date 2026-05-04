@@ -60,27 +60,3 @@ local finder = finders.new_table {
     }
   end,
 }
-
-local showCommandBar = function(opts)
-  opts = opts or {}
-  local conf = require 'telescope.config'.values
-  local actions = require 'telescope.actions'
-  local action_state = require 'telescope.actions.state'
-  pickers.new(opts, {
-    prompt_title = 'Common commands',
-    finder = finder,
-    -- Use the default sorter
-    sorter = conf.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr, map)
-      map('i', '<CR>', function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry(prompt_bufnr)
-        selection.value.action()
-      end)
-      return true
-    end,
-  }):find()
-
-end
-
--- vim.keymap.set("n", "<leader>k", showCommandBar)

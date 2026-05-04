@@ -9,9 +9,16 @@ return {
 		bullet = {
 			-- Turn on / off list bullet rendering
 			enabled = true,
-  left_pad = 0.5,
-  right_pad = 0.5,
-			icons = { "•", "‣","◦","▪" },
+			left_pad = 0.5,
+			right_pad = 0.5,
+			icons = { "•", "‣", "◦", "▪" },
+		},
+		excluded_buffers = { "snacks_picker_preview" },
+		-- Or ignore by filetype if needed
+		file_types = { "markdown" },
+		-- Prevent the plugin from attaching to the snacks previewer
+		exclude = {
+			filetypes = { "snacks_picker_preview" },
 		},
 		checkbox = {
 			-- Turn on / off checkbox state rendering

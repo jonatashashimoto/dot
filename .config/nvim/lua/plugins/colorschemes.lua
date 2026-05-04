@@ -5,21 +5,10 @@ return {
     event = "UIEnter",
     config = function()
       require("huez").setup({})
-      vim.cmd([[colorscheme gruvbox-material]])
+      -- vim.cmd([[colorscheme gruvbox-material]])
+      vim.cmd([[colorscheme sonokai]])
     end,
   },
-  -- {
-  --   "vague-theme/vague.nvim",
-  --   lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other plugins
-  --   config = function()
-  --     -- NOTE: you do not need to call setup if you don't want to.
-  --     -- require("vague").setup({
-  --     --   -- optional configuration here
-  --     -- })
-  --     vim.cmd("colorscheme gruvbox-material")
-  --   end
-  -- },
   "drewtempelmeyer/palenight.vim",
   "sainnhe/edge",
   "sainnhe/sonokai",
@@ -98,10 +87,6 @@ return {
   },
   {
     "nyoom-engineering/oxocarbon.nvim",
-    -- Add in any other configuration;
-    --   event = foo,
-    --   config = bar
-    --   end,
     config = function()
       -- vim.cmd([[colorscheme oxocarbon]])
       -- vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
