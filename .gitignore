@@ -4,6 +4,7 @@
 .config/nvim/bundle/**/*
 .config/nvim/lua/config/dap/adapters/**/*
 .config/StardewValley
+.config/github-copilot/
 .config/containers
 .config/gcloud
 .local/bin
