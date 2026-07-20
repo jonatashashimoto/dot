@@ -6,13 +6,16 @@ local terminalIDs = { ["com.mitchellh.ghostty"] = true, ["com.apple.Terminal"] =
 -- APP SHORTCUTS (Hyper + A + Key)
 local sublayerApps = {
   s = "Slack",
-  f = "Finder",
+  e = "Finder",
+  f = "Figma",
   w = "WhatsApp",
   c = "Google Chrome",
   d = "DBeaver",
   l = "Simplenote",
-  p = "Postman",
+  o = "Ollama",
   t = "Todoist",
+  -- p = "Postman",
+  -- t = "Ghostty",
 }
 
 -- YABAI DIRECT SHORTCUTS (Hyper + Key)
@@ -35,6 +38,8 @@ end
 local K = {
   a = 0,
   r = 15,
+  semi = 41, -- Ponto e vírgula (;)
+  dot = 47, -- Ponto (.)
   rightCmd = 54,
   rightCtrl = 62,
   leftCmd = 55,
@@ -64,7 +69,6 @@ local function createTap()
     -- B. LOGIC FOR HYPER HELD DOWN
     if _G.rightCmdDown and isKeyDown then
       -- 1. PRIORITY: SUBLAYER APP LAUNCHING
-      -- This fixes your bug: checking sublayer BEFORE direct yabai commands
       if _G.sublayerActive then
         local targetApp = appKeyCodes[keyCode]
         if targetApp then
@@ -79,7 +83,6 @@ local function createTap()
       -- 2. TRIGGER SUBLAYER (Hyper + A)
       if keyCode == K.a then
         _G.sublayerActive = true
-        -- hs.alert.show("SUBLAYER ACTIVE", 0.5)
         return true
       end
 
@@ -89,16 +92,13 @@ local function createTap()
         hs.reload()
         return true
       end
-      -- https://google.com
 
       -- 3.5. ALTERNAR JANELAS DO MESMO APP (Hyper + Tab)
       -- Keycode 48 é o TAB
       if keyCode == 48 then
         local app = hs.application.frontmostApplication()
         if app then
-          -- Pega todas as janelas do app no Space atual
           local windows = app:allWindows()
-          -- Filtra apenas janelas reais (com título) para evitar "janelas fantasmas" de status
           local realWindows = {}
           for _, w in ipairs(windows) do
             if w:title() ~= "" and w:subrole() ~= "AXUnknown" then
@@ -107,11 +107,21 @@ local function createTap()
           end
 
           if #realWindows > 1 then
-            -- Foca na última janela da lista (geralmente a próxima na ordem de foco)
             realWindows[#realWindows]:focus()
           end
         end
-        return true -- Consome o evento para não disparar o Tab nativo
+        return true
+      end
+
+      -- 4. GHOSTTY TOGGLE (Hyper + .)
+      if keyCode == K.dot then
+        local gApp = hs.application.get("com.mitchellh.ghostty")
+        if gApp and gApp:isFrontmost() then
+          gApp:hide()
+        else
+          hs.application.launchOrFocus("Ghostty")
+        end
+        return true
       end
 
       -- 5. YABAI COMMANDS
@@ -123,6 +133,7 @@ local function createTap()
     end
 
     -- C. GHOSTTY TOGGLE (Right Ctrl 62)
+    -- (Mantido caso ainda queira usar, senão pode apagar este bloco)
     if keyCode == K.rightCtrl and flags.ctrl then
       local gApp = hs.application.get("com.mitchellh.ghostty")
       if gApp and gApp:isFrontmost() then
