@@ -5,8 +5,8 @@ return {
     event = "UIEnter",
     config = function()
       require("huez").setup({})
-      -- vim.cmd([[colorscheme gruvbox-material]])
-      vim.cmd([[colorscheme sonokai]])
+      vim.cmd([[colorscheme gruvbox-material]])
+      -- vim.cmd([[colorscheme sonokai]])
     end,
   },
   "drewtempelmeyer/palenight.vim",
