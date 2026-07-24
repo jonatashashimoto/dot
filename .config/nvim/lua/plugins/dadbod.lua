@@ -47,6 +47,9 @@ return {
 
 			-- Optional: If DBUI has a specific notify setting (depends on version)
 			vim.g.db_ui_use_nvim_notify = 1
+    vim.g.db_adapters = {
+      libsql = 'sqlite'
+    }
 
 			-- A small Lua helper to redirect command-line echoes to notifications
 			-- This is a 'global' way to catch plugins that don't use vim.notify

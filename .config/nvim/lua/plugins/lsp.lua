@@ -13,8 +13,6 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = { "saghen/blink.cmp" },
 		config = function()
-			vim.g.lspconfig_silent_deprecation = true
-
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			-- Global LSP attach handler (runs automatically whenever ANY lsp attaches to a buffer)
@@ -33,15 +31,18 @@ return {
 				end,
 			})
 
-			-- Standard LSP setup
-			local lspconfig = require("lspconfig")
+			-- Modern Nvim 0.11+ LSP setup
 			local servers = { "lua_ls", "pyright", "svelte", "jsonls", "ts_ls", "marksman" }
 
+			-- 1. Apply configurations
 			for _, server in ipairs(servers) do
-				lspconfig[server].setup({
+				vim.lsp.config(server, {
 					capabilities = capabilities,
 				})
 			end
+			
+			-- 2. Enable the servers
+			vim.lsp.enable(servers)
 
 			-- UI Signs
 			local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
