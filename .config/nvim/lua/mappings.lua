@@ -79,6 +79,9 @@ bind("n", "<c-e>", "<c-u>zz", {})
 bind("v", "*", ':call VisualSelection("f")<CR>', { noremap = true })
 bind("v", "#", ':call VisualSelection("b")<CR>', { noremap = true })
 
+-- pastes and dont yank the visual selected text
+-- vim.keymap.set("v", "p", "_dP")
+
 bind("n", "<leader>vv", ":e $MYVIMRC<cr><c-w>", {})
 bind("n", "<leader>vm", ":e ~/.config/nvim/lua/mappings.lua<cr><c-w>", {})
 bind("n", "<leader>vp", ":e ~/.config/nvim/lua/plugins/init.lua<cr><c-w>", {})

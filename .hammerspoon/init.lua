@@ -10,6 +10,7 @@ local sublayerApps = {
   f = "Figma",
   w = "WhatsApp",
   c = "Google Chrome",
+  x = "Cursor",
   d = "DBeaver",
   l = "Simplenote",
   o = "Ollama",

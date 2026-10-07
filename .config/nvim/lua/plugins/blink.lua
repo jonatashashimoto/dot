@@ -44,6 +44,7 @@ return {
 				"clhistory",
 				"cmdline",
 				"buffer",
+				"codecompanion",
 			},
 		},
 
@@ -55,6 +56,7 @@ return {
 				"buffer",
 				"emoji",
 				"git",
+				"codecompanion",
 			},
 			providers = {
 				emoji = {
@@ -79,6 +81,11 @@ return {
 					opts = {
 						fiexedkeyword = true,
 					},
+				},
+				codecompanion = {
+					name = "CodeCompanion",
+					module = "codecompanion.providers.completion.blink",
+					enabled = true,
 				},
 			},
 		},

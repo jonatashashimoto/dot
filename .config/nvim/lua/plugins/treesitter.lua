@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
 		opts = {
 			highlight = { enabled = true },
 			-- DELETE THIS ENTIRE SECTION:
@@ -21,6 +22,7 @@ return {
 					"rust",
 					"css",
 					"html",
+					"svelte",
 					"javascript",
 					"typescript",
 					"vue",
@@ -34,7 +36,7 @@ return {
 				highlight = {
 					enable = true, -- false will disable the whole extension
 					disable = { "" }, -- list of language that will be disabled
-					additional_vim_regex_highlighting = true,
+					additional_vim_regex_highlighting = false,
 				},
 				indent = { enable = true, disable = { "yaml" } },
 				context_commentstring = {

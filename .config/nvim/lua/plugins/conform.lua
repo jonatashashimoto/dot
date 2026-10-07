@@ -24,5 +24,18 @@ return {
       end
       require("conform").format({ async = true, lsp_format = "fallback", range = range })
     end, { range = true })
+
+					vim.keymap.set("n", "Q", ':Format<cr>', opts)
+						-- vim.lsp.buf.format({ async = true })
+
+
+  -- vim.keymap.set({ "n", "v" }, "Q", function()
+  -- conform.format({
+  --       lsp_fallback = true,
+  --       async = false,
+  --       timeout_ms = 1000,
+  --     })
+  -- end, { desc = "Format buffer or visual range" })
+
   end
 }
